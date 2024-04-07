@@ -25,6 +25,7 @@ class HomeView extends GetView<HomeController> {
           mainAxisSpacing: 20,
         ),
         itemBuilder: (context, index) {
+          // ignore: unused_local_variable
           late String title;
           late IconData icon;
           late VoidCallback onTap;
