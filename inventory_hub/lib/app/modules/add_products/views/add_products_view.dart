@@ -59,10 +59,20 @@ class AddProductsView extends GetView<AddProductsController> {
             ElevatedButton(
               onPressed: () async {
                 if (controller.isLoading.isFalse) {
-                  // controller.isLoading(true);
-                  //login process
-                  // Map<String, dynamic> result
-                  controller.isLoading(false);
+                  if (codeC.text.isNotEmpty ||
+                      nameC.text.isNotEmpty ||
+                      qtyC.text.isNotEmpty) {
+                    controller.isLoading(true);
+                    //login process
+                    Map<String, dynamic> result = await controller.addProduct({
+                      "code": codeC.text,
+                      "name": nameC.text,
+                      "qty": int.tryParse(qtyC.text) ?? 0,
+                    });
+                    controller.isLoading(false);
+                  }
+                } else {
+                  Get.snackbar('Error', 'Please fill all data');
                 }
               },
               style: ElevatedButton.styleFrom(
