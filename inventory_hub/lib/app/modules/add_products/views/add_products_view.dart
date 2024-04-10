@@ -70,9 +70,11 @@ class AddProductsView extends GetView<AddProductsController> {
                       "qty": int.tryParse(qtyC.text) ?? 0,
                     });
                     controller.isLoading(false);
+                    Get.snackbar(result["error"] == true ? "Error" : "Success",
+                        result["message"]);
+                  } else {
+                    Get.snackbar('Error', 'Please fill all data');
                   }
-                } else {
-                  Get.snackbar('Error', 'Please fill all data');
                 }
               },
               style: ElevatedButton.styleFrom(
