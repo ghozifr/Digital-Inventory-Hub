@@ -70,6 +70,9 @@ class AddProductsView extends GetView<AddProductsController> {
                       "qty": int.tryParse(qtyC.text) ?? 0,
                     });
                     controller.isLoading(false);
+
+                    Get.back(); //back to home
+
                     Get.snackbar(result["error"] == true ? "Error" : "Success",
                         result["message"]);
                   } else {
