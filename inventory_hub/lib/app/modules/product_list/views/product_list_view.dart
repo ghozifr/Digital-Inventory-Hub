@@ -10,14 +10,16 @@ class ProductListView extends GetView<ProductListController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ProductListView'),
+        title: const Text('PRODUCTS LIST'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'ProductListView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: ListView.builder(itemBuilder: itemBuilder: (context, index){
+        return Container(
+          height: 200,
+          margin: EdgeInsets.all(bottom: 20),
+          color: grey.shade300,
+        );
+      },
       ),
     );
   }
