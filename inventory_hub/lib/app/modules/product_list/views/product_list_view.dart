@@ -13,13 +13,22 @@ class ProductListView extends GetView<ProductListController> {
         title: const Text('PRODUCTS LIST'),
         centerTitle: true,
       ),
-      body: ListView.builder(itemBuilder: itemBuilder: (context, index){
-        return Container(
-          height: 200,
-          margin: EdgeInsets.all(bottom: 20),
-          color: grey.shade300,
-        );
-      },
+      body: ListView.builder(
+        itemCount: 5,
+        padding: const EdgeInsets.all(20),
+        itemBuilder: (context, index) {
+          return Card(
+            elevation: 5,
+            margin: const EdgeInsets.only(bottom: 20),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(9),
+            ),
+            child: Container(
+              height: 200,
+              color: Colors.grey.shade300,
+            ),
+          );
+        },
       ),
     );
   }
