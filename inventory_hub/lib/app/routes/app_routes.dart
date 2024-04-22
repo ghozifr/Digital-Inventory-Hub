@@ -9,6 +9,8 @@ abstract class Routes {
   static const qr_scan = _Paths.qr_scan;
   static const report = _Paths.report;
   static const login = _Paths.login;
+  static const detail_product = _Paths.detail_product;
+  static const REGISTRATION = _Paths.REGISTRATION;
 }
 
 abstract class _Paths {
@@ -19,4 +21,6 @@ abstract class _Paths {
   static const qr_scan = '/qr-scan';
   static const report = '/report';
   static const login = '/login';
+  static const detail_product = '/detail-product';
+  static const REGISTRATION = '/registration';
 }

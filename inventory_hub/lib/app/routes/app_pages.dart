@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/add_products/bindings/add_products_binding.dart';
 import '../modules/add_products/views/add_products_view.dart';
+import '../modules/detail_product/bindings/detail_product_binding.dart';
+import '../modules/detail_product/views/detail_product_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -10,6 +12,8 @@ import '../modules/product_list/bindings/product_list_binding.dart';
 import '../modules/product_list/views/product_list_view.dart';
 import '../modules/qr_scan/bindings/qr_scan_binding.dart';
 import '../modules/qr_scan/views/qr_scan_view.dart';
+import '../modules/registration/bindings/registration_binding.dart';
+import '../modules/registration/views/registration_view.dart';
 import '../modules/report/bindings/report_binding.dart';
 import '../modules/report/views/report_view.dart';
 
@@ -48,6 +52,16 @@ class AppPages {
       name: _Paths.login,
       page: () => LoginView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.detail_product,
+      page: () => const DetailProductView(),
+      binding: DetailProductBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGISTRATION,
+      page: () => const RegistrationView(),
+      binding: RegistrationBinding(),
     ),
   ];
 }
