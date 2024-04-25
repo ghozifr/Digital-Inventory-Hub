@@ -55,7 +55,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.detail_product,
-      page: () =>  DetailProductView(),
+      page: () => DetailProductView(),
       binding: DetailProductBinding(),
     ),
     GetPage(

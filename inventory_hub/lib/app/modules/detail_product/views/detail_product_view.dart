@@ -86,7 +86,8 @@ class DetailProductView extends GetView<DetailProductController> {
               if (controller.isLoadingUpdate.isFalse) {
                 if (nameC.text.isNotEmpty && qtyC.text.isNotEmpty) {
                   controller.isLoadingUpdate(true);
-                  Map<String, dynamic> hasil = await controller.editProduct({
+
+                  Map<String, dynamic> result = await controller.editProduct({
                     "id": product.productId,
                     "name": nameC.text,
                     "qty": int.tryParse(qtyC.text) ?? 0,
@@ -94,14 +95,14 @@ class DetailProductView extends GetView<DetailProductController> {
                   controller.isLoadingUpdate(false);
 
                   Get.snackbar(
-                    hasil["error"] == true ? "Error" : "Berhasil",
-                    hasil["message"],
+                    result["error"] == true ? "Error" : "Success",
+                    result["message"],
                     duration: const Duration(seconds: 2),
                   );
                 } else {
                   Get.snackbar(
                     "Error",
-                    "Semua data wajib diisi.",
+                    "All data must be fill.",
                     duration: const Duration(seconds: 2),
                   );
                 }

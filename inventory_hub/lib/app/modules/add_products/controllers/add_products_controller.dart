@@ -14,13 +14,13 @@ class AddProductsController extends GetxController {
       });
       return {
         "error": false,
-        "message": "can add product",
+        "message": "Product added successfully",
       };
     } catch (e) {
       //general error
       return {
         "error": true,
-        "message": "cannot add product",
+        "message": "Adding product was unsuccessfull.",
       };
     }
   }

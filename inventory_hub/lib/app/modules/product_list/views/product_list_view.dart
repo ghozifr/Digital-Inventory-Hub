@@ -48,7 +48,7 @@ class ProductListView extends GetView<ProductListController> {
                   ),
                   child: InkWell(
                     onTap: () {
-                      Get.toNamed(Routes.detail_product);
+                      Get.toNamed(Routes.detail_product, arguments: product);
                     },
                     borderRadius: BorderRadius.circular(9),
                     child: Container(
@@ -63,7 +63,7 @@ class ProductListView extends GetView<ProductListController> {
                                   Text(
                                     product.code,
                                     style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                        const TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                   const SizedBox(height: 5),
                                   Text(product.name),
