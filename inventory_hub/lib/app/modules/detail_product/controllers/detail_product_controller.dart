@@ -16,12 +16,12 @@ class DetailProductController extends GetxController {
 
       return {
         "error": false,
-        "message": "Berhasil update product.",
+        "message": "Product updated successfully.",
       };
     } catch (e) {
       return {
         "error": true,
-        "message": "Tidak dapat update product.",
+        "message": "Updating product was unsuccessfull.",
       };
     }
   }
@@ -31,12 +31,12 @@ class DetailProductController extends GetxController {
       await firestore.collection("productions").doc(id).delete();
       return {
         "error": false,
-        "message": "Berhasil delete product.",
+        "message": "Product deleted.",
       };
     } catch (e) {
       return {
         "error": true,
-        "message": "Tidak dapat delete product.",
+        "message": "Can not delete the product.",
       };
     }
   }
