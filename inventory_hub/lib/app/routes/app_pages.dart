@@ -59,8 +59,8 @@ class AppPages {
       binding: DetailProductBinding(),
     ),
     GetPage(
-      name: _Paths.REGISTRATION,
-      page: () => const RegistrationView(),
+      name: _Paths.registration,
+      page: () => RegistrationView(),
       binding: RegistrationBinding(),
     ),
   ];

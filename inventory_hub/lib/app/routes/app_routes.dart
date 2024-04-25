@@ -10,7 +10,7 @@ abstract class Routes {
   static const report = _Paths.report;
   static const login = _Paths.login;
   static const detail_product = _Paths.detail_product;
-  static const REGISTRATION = _Paths.REGISTRATION;
+  static const registration = _Paths.registration;
 }
 
 abstract class _Paths {
@@ -22,5 +22,5 @@ abstract class _Paths {
   static const report = '/report';
   static const login = '/login';
   static const detail_product = '/detail-product';
-  static const REGISTRATION = '/registration';
+  static const registration = '/registration';
 }
