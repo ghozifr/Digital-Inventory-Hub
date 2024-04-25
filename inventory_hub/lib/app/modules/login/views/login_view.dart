@@ -61,6 +61,13 @@ class LoginView extends GetView<LoginController> {
             ),
           ),
         ),
+        const SizedBox(height: 15),
+        TextButton(
+          onPressed: () {
+            Get.toNamed(Routes.registration);
+          },
+          child: Text("Create an account"),
+        ),
         const SizedBox(height: 35),
         ElevatedButton(
           onPressed: () async {
