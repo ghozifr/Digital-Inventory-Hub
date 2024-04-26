@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1040054663068',
     projectId: 'digital-inventory-hub',
     storageBucket: 'digital-inventory-hub.appspot.com',
-    iosClientId: '1040054663068-couti29ir0kl63lf30sqmobctjqmrmjj.apps.googleusercontent.com',
+    iosClientId:
+        '1040054663068-couti29ir0kl63lf30sqmobctjqmrmjj.apps.googleusercontent.com',
     iosBundleId: 'com.kuldiiproject.qrCode',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1040054663068',
     projectId: 'digital-inventory-hub',
     storageBucket: 'digital-inventory-hub.appspot.com',
-    iosClientId: '1040054663068-couti29ir0kl63lf30sqmobctjqmrmjj.apps.googleusercontent.com',
+    iosClientId:
+        '1040054663068-couti29ir0kl63lf30sqmobctjqmrmjj.apps.googleusercontent.com',
     iosBundleId: 'com.kuldiiproject.qrCode',
   );
 }

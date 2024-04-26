@@ -43,9 +43,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1040054663068:android:74703641877a6772df7a59",
+        "mobilesdk_app_id": "1:1040054663068:android:f7763881402a3746df7a59",
         "android_client_info": {
-          "package_name": "com.kuldiiproject.qr_code"
+          "package_name": "com.DIHproject.inventory_hub"
         }
       },
       "oauth_client": [
