@@ -1,4 +1,4 @@
-package com.DIHproject.inventory_hub
+package com.kuldiiproject.qr_code
 
 import io.flutter.embedding.android.FlutterActivity
 

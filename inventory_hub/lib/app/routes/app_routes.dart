@@ -4,23 +4,17 @@ part of 'app_pages.dart';
 abstract class Routes {
   Routes._();
   static const home = _Paths.home;
-  static const add_products = _Paths.add_products;
-  static const product_list = _Paths.product_list;
-  static const qr_scan = _Paths.qr_scan;
-  static const report = _Paths.report;
   static const login = _Paths.login;
-  static const detail_product = _Paths.detail_product;
-  static const registration = _Paths.registration;
+  static const addProduct = _Paths.addProduct;
+  static const products = _Paths.products;
+  static const detailProduct = _Paths.detailProduct;
 }
 
 abstract class _Paths {
   _Paths._();
   static const home = '/home';
-  static const add_products = '/add-products';
-  static const product_list = '/product-list';
-  static const qr_scan = '/qr-scan';
-  static const report = '/report';
   static const login = '/login';
-  static const detail_product = '/detail-product';
-  static const registration = '/registration';
+  static const addProduct = '/add-product';
+  static const products = '/products';
+  static const detailProduct = '/detail-product';
 }

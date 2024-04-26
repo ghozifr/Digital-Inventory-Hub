@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.DIHproject" "\0"
-            VALUE "FileDescription", "inventory_hub" "\0"
+            VALUE "CompanyName", "com.kuldiiproject" "\0"
+            VALUE "FileDescription", "qr_code" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "inventory_hub" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.DIHproject. All rights reserved." "\0"
-            VALUE "OriginalFilename", "inventory_hub.exe" "\0"
-            VALUE "ProductName", "inventory_hub" "\0"
+            VALUE "InternalName", "qr_code" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 com.kuldiiproject. All rights reserved." "\0"
+            VALUE "OriginalFilename", "qr_code.exe" "\0"
+            VALUE "ProductName", "qr_code" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

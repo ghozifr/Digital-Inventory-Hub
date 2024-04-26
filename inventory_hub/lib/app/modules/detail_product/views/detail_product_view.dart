@@ -33,12 +33,13 @@ class DetailProductView extends GetView<DetailProductController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: 50,
-                width: 50,
-                child: QrImageView(
-                data: product.code,
-                size: 50,
-                )
+                height: 200,
+                width: 200,
+                child: QrImage(
+                  data: product.code,
+                  size: 200.0,
+                  version: QrVersions.auto,
+                ),
               ),
             ],
           ),
@@ -86,8 +87,7 @@ class DetailProductView extends GetView<DetailProductController> {
               if (controller.isLoadingUpdate.isFalse) {
                 if (nameC.text.isNotEmpty && qtyC.text.isNotEmpty) {
                   controller.isLoadingUpdate(true);
-
-                  Map<String, dynamic> result = await controller.editProduct({
+                  Map<String, dynamic> hasil = await controller.editProduct({
                     "id": product.productId,
                     "name": nameC.text,
                     "qty": int.tryParse(qtyC.text) ?? 0,
@@ -95,14 +95,14 @@ class DetailProductView extends GetView<DetailProductController> {
                   controller.isLoadingUpdate(false);
 
                   Get.snackbar(
-                    result["error"] == true ? "Error" : "Success",
-                    result["message"],
+                    hasil["error"] == true ? "Error" : "Berhasil",
+                    hasil["message"],
                     duration: const Duration(seconds: 2),
                   );
                 } else {
                   Get.snackbar(
                     "Error",
-                    "All data must be fill.",
+                    "Semua data wajib diisi.",
                     duration: const Duration(seconds: 2),
                   );
                 }

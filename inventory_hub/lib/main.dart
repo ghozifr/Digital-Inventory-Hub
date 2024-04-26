@@ -15,6 +15,7 @@ void main() async {
   );
 
   Get.put(AuthController(), permanent: true);
+
   runApp(MyApp());
 }
 
@@ -25,17 +26,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //FOR AUTO LOGIN -> FIREBASE AUTHETICATION
+    // UNTUK AUTO LOGIN -> FIREBASE AUTHENTICATION
     return StreamBuilder<User?>(
-        stream: auth.authStateChanges(),
-        builder: (context, snapAuth) {
-          if (snapAuth.connectionState == ConnectionState.waiting)
-            return const LoadingScreen();
-          return GetMaterialApp(
-            title: "Digital Inventory Hub",
-            initialRoute: snapAuth.hasData ? Routes.home : Routes.login,
-            getPages: AppPages.routes,
-          );
-        });
+      stream: auth.authStateChanges(),
+      builder: (context, snapAuth) {
+        if (snapAuth.connectionState == ConnectionState.waiting) return const LoadingScreen();
+        return GetMaterialApp(
+          title: "QR Code",
+          initialRoute: snapAuth.hasData ? Routes.home : Routes.login,
+          getPages: AppPages.routes,
+        );
+      },
+    );
   }
 }

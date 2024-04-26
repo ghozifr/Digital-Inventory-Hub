@@ -1,4 +1,4 @@
-# inventory_hub
+# qr_code
 
 A new Flutter project.
 
