@@ -51,7 +51,9 @@ class LoginView extends GetView<LoginController> {
                     controller.isHidden.toggle();
                   },
                   icon: Icon(
-                    controller.isHidden.isFalse ? Icons.remove_red_eye : Icons.remove_red_eye_outlined,
+                    controller.isHidden.isFalse
+                        ? Icons.remove_red_eye
+                        : Icons.remove_red_eye_outlined,
                   ),
                 ),
                 border: OutlineInputBorder(
@@ -60,13 +62,21 @@ class LoginView extends GetView<LoginController> {
               ),
             ),
           ),
+          const SizedBox(height: 15),
+          TextButton(
+            onPressed: () {
+              Get.toNamed(Routes.registration);
+            },
+            child: Text("Create an account"),
+          ),
           const SizedBox(height: 35),
           ElevatedButton(
             onPressed: () async {
               if (controller.isLoading.isFalse) {
                 if (emailC.text.isNotEmpty && passC.text.isNotEmpty) {
                   controller.isLoading(true);
-                  Map<String, dynamic> hasil = await authC.login(emailC.text, passC.text);
+                  Map<String, dynamic> hasil =
+                      await authC.login(emailC.text, passC.text);
                   controller.isLoading(false);
 
                   if (hasil["error"] == true) {
