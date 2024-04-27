@@ -8,7 +8,6 @@ abstract class Routes {
   static const addProduct = _Paths.addProduct;
   static const products = _Paths.products;
   static const detailProduct = _Paths.detailProduct;
-  static const coba_login = _Paths.coba_login;
   static const registration = _Paths.registration;
 }
 
@@ -19,6 +18,5 @@ abstract class _Paths {
   static const addProduct = '/add-product';
   static const products = '/products';
   static const detailProduct = '/detail-product';
-  static const coba_login = '/coba-login';
   static const registration = '/registration';
 }

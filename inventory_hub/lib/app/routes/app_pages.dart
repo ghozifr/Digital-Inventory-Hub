@@ -2,8 +2,6 @@ import 'package:get/get.dart';
 
 import '../modules/add_product/bindings/add_product_binding.dart';
 import '../modules/add_product/views/add_product_view.dart';
-import '../modules/coba_login/bindings/coba_login_binding.dart';
-import '../modules/coba_login/views/coba_login_view.dart';
 import '../modules/detail_product/bindings/detail_product_binding.dart';
 import '../modules/detail_product/views/detail_product_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -45,11 +43,6 @@ class AppPages {
       name: _Paths.detailProduct,
       page: () => DetailProductView(),
       binding: DetailProductBinding(),
-    ),
-    GetPage(
-      name: _Paths.coba_login,
-      page: () => CobaLoginView(),
-      binding: CobaLoginBinding(),
     ),
     GetPage(
       name: _Paths.registration,
