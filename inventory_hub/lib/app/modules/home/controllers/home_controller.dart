@@ -8,23 +8,28 @@ import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import '../../../data/models/product_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   RxList<ProductModel> allProducts = List<ProductModel>.empty().obs;
 
   void downloadCatalog() async {
     final pdf = pw.Document();
+    User? user = _auth.currentUser;
+    if (user != null) {
+      var getData =
+          await firestore.collection("/users/${user.uid}/products").get();
 
-    var getData = await firestore.collection("productions").get();
+      // reset all products -> untuk mengatasi duplikat
+      allProducts([]);
 
-    // reset all products -> untuk mengatasi duplikat
-    allProducts([]);
-
-    // isi data allProducts dari database
-    for (var element in getData.docs) {
-      allProducts.add(ProductModel.fromJson(element.data()));
+      // isi data allProducts dari database
+      for (var element in getData.docs) {
+        allProducts.add(ProductModel.fromJson(element.data()));
+      }
     }
 
     pdf.addPage(
@@ -202,8 +207,15 @@ class HomeController extends GetxController {
 
   Future<Map<String, dynamic>> getProductById(String codeBarang) async {
     try {
+      User? user = _auth.currentUser;
+      if (user == null) {
+        return {
+          "error": true,
+          "message": "Tidak ada user yang login.",
+        };
+      }
       var hasil = await firestore
-          .collection("productions")
+          .collection("/users/${user.uid}/products")
           .where("code", isEqualTo: codeBarang)
           .get();
 
