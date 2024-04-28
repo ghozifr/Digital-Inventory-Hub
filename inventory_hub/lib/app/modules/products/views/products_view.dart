@@ -55,7 +55,7 @@ class ProductsView extends GetView<ProductsController> {
                   borderRadius: BorderRadius.circular(9),
                   child: Container(
                     height: 100,
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(15),
                     child: Row(
                       children: [
                         Expanded(
