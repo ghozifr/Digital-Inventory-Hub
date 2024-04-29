@@ -115,7 +115,9 @@ class DetailProductView extends GetView<DetailProductController> {
               padding: const EdgeInsets.symmetric(vertical: 20),
             ),
             child: Obx(
-              () => Text(controller.isLoadingUpdate.isFalse ? "UPDATE PRODUCT" : "LOADING..."),
+              () => Text(controller.isLoadingUpdate.isFalse
+                  ? "UPDATE PRODUCT"
+                  : "LOADING..."),
             ),
           ),
           TextButton(
@@ -131,7 +133,8 @@ class DetailProductView extends GetView<DetailProductController> {
                   ElevatedButton(
                     onPressed: () async {
                       controller.isLoadingDelete(true);
-                      Map<String, dynamic> hasil = await controller.deleteProduct(product.productId);
+                      Map<String, dynamic> hasil =
+                          await controller.deleteProduct(product.productId);
                       controller.isLoadingDelete(false);
 
                       Get.back(); // tutup dialog
@@ -148,7 +151,7 @@ class DetailProductView extends GetView<DetailProductController> {
                           ? const Text("DELETE")
                           : Container(
                               padding: const EdgeInsets.all(2),
-                              height: 15,
+                              height: 10,
                               width: 15,
                               child: const CircularProgressIndicator(
                                 color: Colors.white,

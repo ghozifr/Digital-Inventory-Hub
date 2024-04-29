@@ -1,2 +1,6 @@
 
 this note was created for branches update testing.
+
+checking existing email
+verification email
+dashboard for statistic
