@@ -95,14 +95,14 @@ class DetailProductView extends GetView<DetailProductController> {
                   controller.isLoadingUpdate(false);
 
                   Get.snackbar(
-                    hasil["error"] == true ? "Error" : "Berhasil",
+                    hasil["error"] == true ? "Error" : "Success",
                     hasil["message"],
                     duration: const Duration(seconds: 2),
                   );
                 } else {
                   Get.snackbar(
                     "Error",
-                    "Semua data wajib diisi.",
+                    "All data must be filled in.",
                     duration: const Duration(seconds: 2),
                   );
                 }
@@ -141,7 +141,7 @@ class DetailProductView extends GetView<DetailProductController> {
                       Get.back(); // Balik ke page all products
 
                       Get.snackbar(
-                        hasil["error"] == true ? "Error" : "Berhasil",
+                        hasil["error"] == true ? "Error" : "Success",
                         hasil["message"],
                         duration: const Duration(seconds: 2),
                       );

@@ -85,7 +85,7 @@ class LoginView extends GetView<LoginController> {
                     Get.offAllNamed(Routes.home);
                   }
                 } else {
-                  Get.snackbar("Error", "Email dan password wajib diisi.");
+                  Get.snackbar("Error", "Email dan password must be fill.");
                 }
               }
             },

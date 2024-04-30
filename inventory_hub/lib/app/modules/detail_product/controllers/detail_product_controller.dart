@@ -20,12 +20,12 @@ class DetailProductController extends GetxController {
       }
       return {
         "error": false,
-        "message": "Berhasil update product.",
+        "message": "Product updated successfully.",
       };
     } catch (e) {
       return {
         "error": true,
-        "message": "Tidak dapat update product.",
+        "message": "Updated product was unsuccessful.",
       };
     }
   }
@@ -39,12 +39,12 @@ class DetailProductController extends GetxController {
         
       return {
         "error": false,
-        "message": "Berhasil delete product.",
+        "message": "Product deleted successfully.",
       };
     } catch (e) {
       return {
         "error": true,
-        "message": "Tidak dapat delete product.",
+        "message": "Deleted product was unsuccessful.",
       };
     }
   }
