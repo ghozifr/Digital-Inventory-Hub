@@ -9,10 +9,10 @@ class LoginView extends GetView<LoginController> {
   LoginView({Key? key}) : super(key: key);
 
   final TextEditingController emailC = TextEditingController(
-    text: "admin@gmail.com",
+    text: "",
   );
   final TextEditingController passC = TextEditingController(
-    text: "admin123",
+    text: "",
   );
 
   final AuthController authC = Get.find<AuthController>();
@@ -34,7 +34,7 @@ Widget build(BuildContext context) {
       children: [
         // Illustration Picture
         Image.asset(
-          'lib/assets/images/logo.png', // image path
+          'lib/assets/images/login.png', // image path
           width: 200, 
           height: 200, 
         ),

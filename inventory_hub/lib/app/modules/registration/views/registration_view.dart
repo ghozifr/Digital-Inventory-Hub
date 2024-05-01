@@ -28,9 +28,17 @@ class RegistrationView extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
+        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Illustration Picture
+        Image.asset(
+          'lib/assets/images/signup.png', // image path
+          width: 200, 
+          height: 200, 
+        ),
+        const SizedBox(height: 50),
             TextField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,

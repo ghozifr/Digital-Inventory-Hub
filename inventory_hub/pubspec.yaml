@@ -6,6 +6,7 @@ environment:
   sdk: '>=2.18.6 <3.0.0'
 
 dependencies:
+  animated_splash_screen: ^1.3.0
   cloud_firestore: ^4.3.1
   cupertino_icons: ^1.0.2
   firebase_auth: ^4.2.5
@@ -14,6 +15,7 @@ dependencies:
     sdk: flutter
   flutter_barcode_scanner: ^2.0.0
   get: 4.6.5
+  lottie: ^3.1.0
   open_file: ^3.2.1
   path_provider: ^2.0.11
   pdf: ^3.3.0
@@ -28,3 +30,6 @@ flutter:
   uses-material-design: true
   assets:
    - lib/assets/images/logo.png
+   - lib/assets/images/signup.png
+   - lib/assets/images/login.png
+   - lib/assets/lottie/animation.json

@@ -28,12 +28,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // UNTUK AUTO LOGIN -> FIREBASE AUTHENTICATION
     return StreamBuilder<User?>(
+      
       stream: auth.authStateChanges(),
       builder: (context, snapAuth) {
         if (snapAuth.connectionState == ConnectionState.waiting) return const LoadingScreen();
         return GetMaterialApp(
-          title: "QR Code",
-          initialRoute: snapAuth.hasData ? Routes.home : Routes.login,
+          debugShowCheckedModeBanner: false,
+          initialRoute: snapAuth.hasData ? Routes.splash : Routes.splash,
           getPages: AppPages.routes,
         );
       },
