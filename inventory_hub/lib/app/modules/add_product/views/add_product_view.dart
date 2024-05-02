@@ -14,7 +14,9 @@ class AddProductView extends GetView<AddProductController> {
       appBar: AppBar(
         title: const Text('ADD PRODUCT'),
         centerTitle: true,
+        backgroundColor: const Color(0xFFF1EAFF),
       ),
+      backgroundColor: const Color(0xFFF1EAFF),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [

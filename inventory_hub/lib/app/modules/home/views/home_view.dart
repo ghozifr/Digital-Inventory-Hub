@@ -14,9 +14,11 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeView'),
+        title: const Text('Menu'),
         centerTitle: true,
+        backgroundColor: const Color(0xFFF1EAFF),
       ),
+      backgroundColor: const Color(0xFFF1EAFF),
       body: GridView.builder(
         itemCount: 4,
         padding: const EdgeInsets.all(20),
@@ -76,7 +78,7 @@ class HomeView extends GetView<HomeController> {
           }
 
           return Material(
-            color: Colors.grey.shade300,
+            color: const Color(0xFFD0A2F7),
             borderRadius: BorderRadius.circular(9),
             child: InkWell(
               onTap: onTap,
@@ -106,6 +108,7 @@ class HomeView extends GetView<HomeController> {
             Get.snackbar("Error", hasil["error"]);
           }
         },
+        backgroundColor: const Color(0xFFDCBFFF),
         child: Icon(Icons.logout),
       ),
     );

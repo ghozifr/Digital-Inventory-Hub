@@ -21,14 +21,14 @@ Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
       title: const Text('Hi! Welcome back', style: TextStyle(
-        color: Color(0xFF3383C5),
+        color: Color(0xFF5B0888),
         fontWeight: FontWeight.bold,
         ),
       ),
       centerTitle: true,
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF1EAFF),
     ),
-    
+    backgroundColor: const Color(0xFFF1EAFF),
     body: ListView(
       padding: const EdgeInsets.all(20),
       children: [
@@ -114,10 +114,31 @@ Widget build(BuildContext context) {
             ),
             padding: const EdgeInsets.symmetric(vertical: 20),
           ),
+          child: Container(
+             decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(9),
+                gradient: const LinearGradient(
+                   begin: Alignment.topLeft,
+                   end: Alignment.bottomRight,
+                   colors: [
+                    Color(0xFF9575CD), // Start color
+                  Color(0xFF7E57C2), // End color
+                    ],
+                  ),
+               ),
+          child: Center(
           child: Obx(
-            () => Text(controller.isLoading.isFalse ? "LOGIN" : "LOADING..."),
+            () => Text(controller.isLoading.isFalse ? "LOGIN" : "LOADING...",
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              ),
+              ),
+            ),
+           ),
           ),
-        ),
+        )
       ],
     ),
   );
