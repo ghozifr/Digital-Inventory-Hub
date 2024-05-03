@@ -12,7 +12,12 @@
           "package_name": "com.DIHproject.inventory_hub"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1040054663068-0s6ifesmld0on1m3qvjhv2g0rpvfkal3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC468eUmfStAcECUQAXB7VYVVfDMwJNUaQ"
@@ -20,7 +25,55 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040054663068-0s6ifesmld0on1m3qvjhv2g0rpvfkal3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1040054663068-070clj7ii5fbuurvrl5e8t3kfmvinmej.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.DIHproject.inventoryHub"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040054663068:android:f7763881402a3746df7a59",
+        "android_client_info": {
+          "package_name": "com.DIHproject.inventory_hub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040054663068-0s6ifesmld0on1m3qvjhv2g0rpvfkal3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC468eUmfStAcECUQAXB7VYVVfDMwJNUaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040054663068-0s6ifesmld0on1m3qvjhv2g0rpvfkal3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1040054663068-070clj7ii5fbuurvrl5e8t3kfmvinmej.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.DIHproject.inventoryHub"
+              }
+            }
+          ]
         }
       }
     }

@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
-  // CHECK CONDITON FOR AUTO LOGIN
-  // NULL -> LOGIN
-  // UID -> HOME
+  // untuk cek kondisi ada auth atau tidak -> uid
+  //  Null -> tidak ada user yang sedang login
+  // uid -> ada user yang sedang login
   String? uid;
 
   late FirebaseAuth auth;
@@ -12,21 +12,21 @@ class AuthController extends GetxController {
   Future<Map<String, dynamic>> login(String email, String pass) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: pass);
+
       return {
         "error": false,
-        "message": "can login",
+        "message": "Berhasil login.",
       };
     } on FirebaseAuthException catch (e) {
-      //excepton from firebase
       return {
         "error": true,
         "message": "${e.message}",
       };
     } catch (e) {
-      //general error
+      // Error general
       return {
         "error": true,
-        "message": "cannot login",
+        "message": "Tidak dapat login.",
       };
     }
   }
@@ -34,21 +34,21 @@ class AuthController extends GetxController {
   Future<Map<String, dynamic>> logout() async {
     try {
       await auth.signOut();
+
       return {
         "error": false,
-        "message": "can logout",
+        "message": "Berhasil logout.",
       };
     } on FirebaseAuthException catch (e) {
-      //excepton from firebase
       return {
         "error": true,
         "message": "${e.message}",
       };
     } catch (e) {
-      //general error
+      // Error general
       return {
         "error": true,
-        "message": "cannot logout",
+        "message": "Tidak dapat logout.",
       };
     }
   }
@@ -56,6 +56,7 @@ class AuthController extends GetxController {
   @override
   void onInit() {
     auth = FirebaseAuth.instance;
+
     auth.authStateChanges().listen((event) {
       uid = event?.uid;
     });

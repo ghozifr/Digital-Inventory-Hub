@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyC468eUmfStAcECUQAXB7VYVVfDMwJNUaQ',
-    appId: '1:1040054663068:android:f7763881402a3746df7a59',
+    appId: '1:1040054663068:android:74703641877a6772df7a59',
     messagingSenderId: '1040054663068',
     projectId: 'digital-inventory-hub',
     storageBucket: 'digital-inventory-hub.appspot.com',
@@ -63,19 +63,23 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCyjx4g8KOoaBUXAQBC7EKe2zuFtHNDIww',
-    appId: '1:1040054663068:ios:488ede89ef03cb0cdf7a59',
+    appId: '1:1040054663068:ios:c9b1857241ba2f36df7a59',
     messagingSenderId: '1040054663068',
     projectId: 'digital-inventory-hub',
     storageBucket: 'digital-inventory-hub.appspot.com',
-    iosBundleId: 'com.DIHproject.inventoryHub',
+    iosClientId:
+        '1040054663068-couti29ir0kl63lf30sqmobctjqmrmjj.apps.googleusercontent.com',
+    iosBundleId: 'com.kuldiiproject.qrCode',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyCyjx4g8KOoaBUXAQBC7EKe2zuFtHNDIww',
-    appId: '1:1040054663068:ios:a57675bb980c0c56df7a59',
+    appId: '1:1040054663068:ios:c9b1857241ba2f36df7a59',
     messagingSenderId: '1040054663068',
     projectId: 'digital-inventory-hub',
     storageBucket: 'digital-inventory-hub.appspot.com',
-    iosBundleId: 'com.DIHproject.inventoryHub.RunnerTests',
+    iosClientId:
+        '1040054663068-couti29ir0kl63lf30sqmobctjqmrmjj.apps.googleusercontent.com',
+    iosBundleId: 'com.kuldiiproject.qrCode',
   );
 }

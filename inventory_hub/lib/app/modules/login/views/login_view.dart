@@ -1,59 +1,79 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:inventory_hub/app/routes/app_pages.dart';
 
 import '../../../controllers/auth_controller.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
   LoginView({Key? key}) : super(key: key);
 
-  final TextEditingController emailController = TextEditingController(
-    text: 'admin@gmail.com',
+  final TextEditingController emailC = TextEditingController(
+    text: "",
   );
-  final TextEditingController passController = TextEditingController(
-    text: 'admin123',
+  final TextEditingController passC = TextEditingController(
+    text: "",
   );
 
   final AuthController authC = Get.find<AuthController>();
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('LOGIN'),
-        centerTitle: true,
-      ),
-      body: ListView(padding: const EdgeInsets.all(20), children: [
-        TextField(
-          autocorrect: false,
-          controller: emailController,
-          keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
-            labelText: 'Email',
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(9),
-            ),
-          ),
+ @override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text('Hi! Welcome back', style: TextStyle(
+        color: Color(0xFF5B0888),
+        fontWeight: FontWeight.bold,
         ),
-        const SizedBox(height: 20),
+      ),
+      centerTitle: true,
+      backgroundColor: const Color(0xFFF1EAFF),
+    ),
+    backgroundColor: const Color(0xFFF1EAFF),
+    body: ListView(
+      padding: const EdgeInsets.all(20),
+      children: [
+        // Illustration Picture
+        Image.asset(
+          'lib/assets/images/login.png', // image path
+          width: 200, 
+          height: 200, 
+        ),
+        const SizedBox(height: 50),
+        // Email TextField
+        Column(
+          children: [
+            TextField(
+              autocorrect: false,
+              controller: emailC,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                labelText: "Email",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(9),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+          ],
+        ),
+        // Password TextField
         Obx(
           () => TextField(
             autocorrect: false,
-            controller: passController,
+            controller: passC,
             keyboardType: TextInputType.text,
             obscureText: controller.isHidden.value,
             decoration: InputDecoration(
-              labelText: 'Password',
+              labelText: "Password",
               suffixIcon: IconButton(
                 onPressed: () {
                   controller.isHidden.toggle();
-                  // = !controller.isHidden.value;
                 },
                 icon: Icon(
                   controller.isHidden.isFalse
                       ? Icons.remove_red_eye
                       : Icons.remove_red_eye_outlined,
-                ), //Icons.visibility_off
+                ),
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(9),
@@ -72,22 +92,19 @@ class LoginView extends GetView<LoginController> {
         ElevatedButton(
           onPressed: () async {
             if (controller.isLoading.isFalse) {
-              // controller.isLoading(true);
-              if (emailController.text.isNotEmpty &&
-                  passController.text.isNotEmpty) {
+              if (emailC.text.isNotEmpty && passC.text.isNotEmpty) {
                 controller.isLoading(true);
-                //login process
-                Map<String, dynamic> result = await authC.login(
-                    emailController.text, passController.text);
+                Map<String, dynamic> hasil =
+                    await authC.login(emailC.text, passC.text);
                 controller.isLoading(false);
 
-                if (result['error'] == true) {
-                  Get.snackbar("Error", result["message"]);
+                if (hasil["error"] == true) {
+                  Get.snackbar("Error", hasil["message"]);
                 } else {
                   Get.offAllNamed(Routes.home);
                 }
               } else {
-                Get.snackbar("Error", "Email and Password cannot be empty!");
+                Get.snackbar("Error", "Email dan password must be filled.");
               }
             }
           },
@@ -97,12 +114,33 @@ class LoginView extends GetView<LoginController> {
             ),
             padding: const EdgeInsets.symmetric(vertical: 20),
           ),
-          // Get.offNamed('/home');
+          child: Container(
+             decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(9),
+                gradient: const LinearGradient(
+                   begin: Alignment.topLeft,
+                   end: Alignment.bottomRight,
+                   colors: [
+                    Color(0xFF9575CD), // Start color
+                  Color(0xFF7E57C2), // End color
+                    ],
+                  ),
+               ),
+          child: Center(
           child: Obx(
-            () => Text(controller.isLoading.isFalse ? "LOGIN" : "LOADING..."),
+            () => Text(controller.isLoading.isFalse ? "LOGIN" : "LOADING...",
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              ),
+              ),
+            ),
+           ),
           ),
-        ),
-      ]),
-    );
-  }
+        )
+      ],
+    ),
+  );
+}
 }

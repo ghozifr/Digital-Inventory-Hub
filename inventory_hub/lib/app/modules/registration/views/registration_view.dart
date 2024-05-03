@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:inventory_hub/app/modules/login/views/login_view.dart';
 
+import '../../login/views/login_view.dart';
 import '../controllers/registration_controller.dart';
 
 class RegistrationView extends StatelessWidget {
@@ -23,14 +23,28 @@ class RegistrationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SIGN UP'),
+        title: const Text('Hi! Welcome', style: TextStyle(
+        color: Color(0xFF5B0888),
+        fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
+        backgroundColor: const Color(0xFFF1EAFF),
       ),
+      backgroundColor: const Color(0xFFF1EAFF),
       body: Padding(
         padding: const EdgeInsets.all(20),
+        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Illustration Picture
+        Image.asset(
+          'lib/assets/images/signup.png', // image path
+          width: 200, 
+          height: 200, 
+        ),
+        const SizedBox(height: 50),
             TextField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,

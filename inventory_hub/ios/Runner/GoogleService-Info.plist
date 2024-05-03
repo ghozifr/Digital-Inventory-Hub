@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1040054663068-070clj7ii5fbuurvrl5e8t3kfmvinmej.apps.googleusercontent.com</string>
+	<string>1040054663068-couti29ir0kl63lf30sqmobctjqmrmjj.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1040054663068-070clj7ii5fbuurvrl5e8t3kfmvinmej</string>
+	<string>com.googleusercontent.apps.1040054663068-couti29ir0kl63lf30sqmobctjqmrmjj</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCyjx4g8KOoaBUXAQBC7EKe2zuFtHNDIww</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.DIHproject.inventoryHub</string>
+	<string>com.DIHproject.qrCode</string> 
 	<key>PROJECT_ID</key>
 	<string>digital-inventory-hub</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1040054663068:ios:488ede89ef03cb0cdf7a59</string>
+	<string>1:1040054663068:ios:c9b1857241ba2f36df7a59</string>
 </dict>
 </plist>
