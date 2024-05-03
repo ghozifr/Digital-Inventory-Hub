@@ -23,9 +23,15 @@ class DetailProductView extends GetView<DetailProductController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DETAIL PRODUCT'),
+        title: const Text('DETAIL PRODUCT', style: TextStyle(
+        color: Color(0xFF5B0888),
+        fontWeight: FontWeight.bold,
+        ),
+      ),
+      backgroundColor: const Color(0xFFF1EAFF),
         centerTitle: true,
       ),
+      backgroundColor: const Color(0xFFF1EAFF),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [

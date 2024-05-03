@@ -114,33 +114,18 @@ Widget build(BuildContext context) {
             ),
             padding: const EdgeInsets.symmetric(vertical: 20),
           ),
-          child: Container(
-             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(9),
-                gradient: const LinearGradient(
-                   begin: Alignment.topLeft,
-                   end: Alignment.bottomRight,
-                   colors: [
-                    Color(0xFF9575CD), // Start color
-                  Color(0xFF7E57C2), // End color
-                    ],
-                  ),
-               ),
-          child: Center(
           child: Obx(
             () => Text(controller.isLoading.isFalse ? "LOGIN" : "LOADING...",
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: Color(0xFF5B0888),
               ),
               ),
             ),
            ),
-          ),
-        )
-      ],
-    ),
-  );
-}
+          ]
+        ),
+      );
+    }
 }

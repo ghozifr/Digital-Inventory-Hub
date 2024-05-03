@@ -33,3 +33,7 @@ flutter:
    - lib/assets/images/signup.png
    - lib/assets/images/login.png
    - lib/assets/lottie/animation.json
+   - lib/assets/images/qr.png
+   - lib/assets/images/file.png
+   - lib/assets/images/add.png
+   - lib/assets/images/list.png
