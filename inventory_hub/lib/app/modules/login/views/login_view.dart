@@ -46,11 +46,11 @@ Widget build(BuildContext context) {
               autocorrect: false,
               controller: emailC,
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Email",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(9),
-                ),
+                border: InputBorder.none,
+                fillColor: Color.fromARGB(255, 255, 255, 255),
+                filled: true,
               ),
             ),
             const SizedBox(height: 20),
@@ -75,9 +75,9 @@ Widget build(BuildContext context) {
                       : Icons.remove_red_eye_outlined,
                 ),
               ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(9),
-              ),
+              border: InputBorder.none,
+                fillColor: const Color.fromARGB(255, 255, 255, 255),
+                filled: true,
             ),
           ),
         ),
@@ -113,6 +113,8 @@ Widget build(BuildContext context) {
               borderRadius: BorderRadius.circular(9),
             ),
             padding: const EdgeInsets.symmetric(vertical: 20),
+            backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+              elevation: 5,
           ),
           child: Obx(
             () => Text(controller.isLoading.isFalse ? "LOGIN" : "LOADING...",
