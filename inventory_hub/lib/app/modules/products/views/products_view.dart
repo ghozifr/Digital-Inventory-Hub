@@ -13,9 +13,17 @@ class ProductsView extends GetView<ProductsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PRODUCTS'),
+        title: const Text(
+        'PRODUCT',
+        style: TextStyle(
+          color: Color(0xFF5B0888),
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      backgroundColor: const Color(0xFFF1EAFF),
         centerTitle: true,
       ),
+      backgroundColor: const Color(0xFFF1EAFF),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: controller.streamProducts(),
         builder: (context, snapProducts) {
@@ -48,6 +56,7 @@ class ProductsView extends GetView<ProductsController> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(9),
                 ),
+                color: const Color(0xFFE5D4FF),
                 child: InkWell(
                   onTap: () {
                     Get.toNamed(Routes.detailProduct, arguments: product);

@@ -46,11 +46,11 @@ Widget build(BuildContext context) {
               autocorrect: false,
               controller: emailC,
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Email",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(9),
-                ),
+                border: InputBorder.none,
+                fillColor: Color.fromARGB(255, 255, 255, 255),
+                filled: true,
               ),
             ),
             const SizedBox(height: 20),
@@ -75,9 +75,9 @@ Widget build(BuildContext context) {
                       : Icons.remove_red_eye_outlined,
                 ),
               ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(9),
-              ),
+              border: InputBorder.none,
+                fillColor: const Color.fromARGB(255, 255, 255, 255),
+                filled: true,
             ),
           ),
         ),
@@ -113,34 +113,21 @@ Widget build(BuildContext context) {
               borderRadius: BorderRadius.circular(9),
             ),
             padding: const EdgeInsets.symmetric(vertical: 20),
+            backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+              elevation: 5,
           ),
-          child: Container(
-             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(9),
-                gradient: const LinearGradient(
-                   begin: Alignment.topLeft,
-                   end: Alignment.bottomRight,
-                   colors: [
-                    Color(0xFF9575CD), // Start color
-                  Color(0xFF7E57C2), // End color
-                    ],
-                  ),
-               ),
-          child: Center(
           child: Obx(
             () => Text(controller.isLoading.isFalse ? "LOGIN" : "LOADING...",
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: Color(0xFF5B0888),
               ),
               ),
             ),
            ),
-          ),
-        )
-      ],
-    ),
-  );
-}
+          ]
+        ),
+      );
+    }
 }
