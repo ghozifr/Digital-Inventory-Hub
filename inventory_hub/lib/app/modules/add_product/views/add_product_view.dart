@@ -98,7 +98,7 @@ Widget build(BuildContext context) {
                     hasil["error"] == true ? "Error" : "Success",
                     hasil["message"]);
               } else {
-                Get.snackbar("Error", "Semua data wajib diisi.");
+                Get.snackbar("Error", "All data must be filled in.");
               }
             }
           },
