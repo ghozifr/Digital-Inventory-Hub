@@ -14,14 +14,13 @@ class HomeView extends GetView<HomeController> {
 Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
-      title: const Text(
-        'Home',
-        style: TextStyle(
-          color: Color(0xFF5B0888),
-          fontWeight: FontWeight.bold,
+      flexibleSpace: Center( // Center the image horizontally
+        child: Image.asset(
+          'lib/assets/images/ihLogo.png',
+          width: 50, // Adjust width as needed
+          height: 50, // Adjust height as needed
         ),
       ),
-      centerTitle: true,
       backgroundColor: const Color(0xFFF1EAFF),
     ),
     backgroundColor: const Color(0xFFF1EAFF),
