@@ -79,26 +79,11 @@ Widget build(BuildContext context) {
             filled: true,
           ),
         ),
-        const SizedBox(height: 15),
-        // Confirm Password TextField
-        TextField(
-          autocorrect: false,
-          controller: _passwordController,
-          keyboardType: TextInputType.text,
-          obscureText: true,
-          decoration: const InputDecoration(
-            prefixIcon: Icon(Icons.lock),
-            prefixIconColor:  Color(0xFF5B0888),
-            labelText: "Confirm Password",
-            border: InputBorder.none,
-            fillColor:  Color.fromARGB(255, 255, 255, 255),
-            filled: true,
-          ),
-        ),
+        
         const SizedBox(height: 15),
         TextButton(
           onPressed: () {
-            Get.toNamed(Routes.registration);
+            Get.toNamed(Routes.login);
           },
           child: Text("Already have an account?"),
         ),
@@ -139,5 +124,4 @@ Widget build(BuildContext context) {
     ),
   );
 }
-
 }
