@@ -16,7 +16,7 @@ class LoginView extends GetView<LoginController> {
   );
 
   final AuthController authC = Get.find<AuthController>();
- @override
+@override
 Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
@@ -47,6 +47,8 @@ Widget build(BuildContext context) {
               controller: emailC,
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.email),
+                prefixIconColor: Color(0xFF5B0888), // Add icon to the left of TextField
                 labelText: "Email",
                 border: InputBorder.none,
                 fillColor: Color.fromARGB(255, 255, 255, 255),
@@ -64,6 +66,8 @@ Widget build(BuildContext context) {
             keyboardType: TextInputType.text,
             obscureText: controller.isHidden.value,
             decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.lock),
+              prefixIconColor: const Color(0xFF5B0888),
               labelText: "Password",
               suffixIcon: IconButton(
                 onPressed: () {

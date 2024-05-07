@@ -30,7 +30,7 @@ Widget build(BuildContext context) {
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: List.generate(4, (index) {
+          children: List.generate(5, (index) {
             late String title;
             late String imagePath;
             late VoidCallback onTap;
@@ -78,12 +78,21 @@ Widget build(BuildContext context) {
                 description = "Scan QR code to view product details";
                 break;
               case 3:
-                title = "Catalog";
+                title = "Dowload";
                 imagePath = "lib/assets/images/file.png";
                 onTap = () {
                   controller.downloadCatalog();
                 };
-                description = "Download catalog";
+                description = "Download product list";
+                break;
+
+                case 4:
+                title = "Analysis";
+                imagePath = "lib/assets/images/graph.png";
+                onTap = () {
+                  //link webview
+                };
+                description = "View analysis of the products";
                 break;
             }
 
