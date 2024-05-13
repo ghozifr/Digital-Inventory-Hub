@@ -63,7 +63,7 @@ class ProductsView extends GetView<ProductsController> {
                   },
                   borderRadius: BorderRadius.circular(9),
                   child: Container(
-                    height: 100,
+                    height: 112,
                     padding: const EdgeInsets.all(15),
                     child: Row(
                       children: [
@@ -74,12 +74,18 @@ class ProductsView extends GetView<ProductsController> {
                               Text(
                                 product.code,
                                 style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.bold, color: Color(0xFF5B0888), fontSize: 18,
                                 ),
                               ),
-                              const SizedBox(height: 5),
-                              Text(product.name),
-                              Text("Jumlah : ${product.qty}"),
+                              const SizedBox(height: 6),
+                              Text(product.name,
+                              style: const TextStyle(
+                                  color: Color(0xFF5B0888), fontSize: 16,
+                                ),),
+                              Text("Quantity : ${product.qty}",
+                              style: const TextStyle(
+                                  color: Color(0xFF5B0888), fontSize: 14,
+                                ),),
                             ],
                           ),
                         ),
