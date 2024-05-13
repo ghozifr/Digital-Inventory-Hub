@@ -12,6 +12,10 @@ import '../modules/products/bindings/products_binding.dart';
 import '../modules/products/views/products_view.dart';
 import '../modules/registration/bindings/registration_binding.dart';
 import '../modules/registration/views/registration_view.dart';
+import '../modules/splash/splashScreen.dart';
+import '../modules/splash/splashScreen.dart';
+import '../modules/splash_page/bindings/splash_page_binding.dart';
+import '../modules/splash_page/views/splash_page_view.dart';
 
 part 'app_routes.dart';
 
@@ -48,6 +52,15 @@ class AppPages {
       name: _Paths.registration,
       page: () => RegistrationView(),
       binding: RegistrationBinding(),
+    ),
+    // GetPage(
+    //   name: _Paths.splash,
+    //   page: () => const Splashscreen(),
+    // ),
+    GetPage(
+      name: _Paths.splash,
+      page: () => const SplashPageView(),
+      binding: SplashPageBinding(),
     ),
   ];
 }

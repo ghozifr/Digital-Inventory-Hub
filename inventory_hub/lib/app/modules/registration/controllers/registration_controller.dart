@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,9 +23,9 @@ class RegistrationController extends GetxController {
 
       // Create a new document in Firestore with the user's UID as the document ID
       await _firestore.collection('users').doc(userCredential.user!.uid).set({
-         'email': email,
+        'email': email,
 //         // Add more fields as needed
-});
+      });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         Get.snackbar(

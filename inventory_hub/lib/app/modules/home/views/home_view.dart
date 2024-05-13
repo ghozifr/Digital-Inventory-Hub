@@ -14,88 +14,138 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
-      ),
-      body: GridView.builder(
-        itemCount: 4,
-        padding: const EdgeInsets.all(20),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 20,
-          crossAxisSpacing: 20,
+        flexibleSpace: Center(
+          // Center the image horizontally
+          child: Image.asset(
+            'lib/assets/images/ihLogo.png',
+            width: 50, // Adjust width as needed
+            height: 50, // Adjust height as needed
+          ),
         ),
-        itemBuilder: (context, index) {
-          late String title;
-          late IconData icon;
-          late VoidCallback onTap;
+        backgroundColor: const Color(0xFFF1EAFF),
+      ),
+      backgroundColor: const Color(0xFFF1EAFF),
+      body: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: List.generate(5, (index) {
+              late String title;
+              late String imagePath;
+              late VoidCallback onTap;
+              late String description;
 
-          switch (index) {
-            case 0:
-              title = "Add Product";
-              icon = Icons.post_add_rounded;
-              onTap = () => Get.toNamed(Routes.addProduct);
-              break;
-            case 1:
-              title = "Products";
-              icon = Icons.list_alt_outlined;
-              onTap = () => Get.toNamed(Routes.products);
-              break;
-            case 2:
-              title = "QR Code";
-              icon = Icons.qr_code;
-              onTap = () async {
-                String barcode = await FlutterBarcodeScanner.scanBarcode(
-                  "#000000",
-                  "CANCEL",
-                  true,
-                  ScanMode.QR,
-                );
+              switch (index) {
+                case 0:
+                  title = "Add Product";
+                  imagePath = "lib/assets/images/add.png";
+                  onTap = () => Get.toNamed(Routes.addProduct);
+                  description =
+                      "Add a new product by adding product code, name, and quantity.";
+                  break;
+                case 1:
+                  title = "Products";
+                  imagePath = "lib/assets/images/list.png";
+                  onTap = () => Get.toNamed(Routes.products);
+                  description = "View all products that have been added.";
+                  break;
+                case 2:
+                  title = "QR Code";
+                  imagePath = "lib/assets/images/qr.png";
+                  onTap = () async {
+                    String barcode = await FlutterBarcodeScanner.scanBarcode(
+                      "#000000",
+                      "CANCEL",
+                      true,
+                      ScanMode.QR,
+                    );
 
-                // Get data dari firebase search by product id
-                Map<String, dynamic> hasil =
-                    await controller.getProductById(barcode);
-                if (hasil["error"] == false) {
-                  Get.toNamed(Routes.detailProduct, arguments: hasil["data"]);
-                } else {
-                  Get.snackbar(
-                    "Error",
-                    hasil["message"],
-                    duration: const Duration(seconds: 2),
-                  );
-                }
-              };
-              break;
-            case 3:
-              title = "Catalog";
-              icon = Icons.document_scanner_outlined;
-              onTap = () {
-                controller.downloadCatalog();
-              };
-              break;
-          }
+                    // Get data dari firebase search by product id
+                    Map<String, dynamic> hasil =
+                        await controller.getProductById(barcode);
+                    if (hasil["error"] == false) {
+                      Get.toNamed(Routes.detailProduct,
+                          arguments: hasil["data"]);
+                    } else {
+                      Get.snackbar(
+                        "Error",
+                        hasil["message"],
+                        duration: const Duration(seconds: 2),
+                      );
+                    }
+                  };
+                  description = "Scan QR code to view product details";
+                  break;
+                case 3:
+                  title = "Dowload";
+                  imagePath = "lib/assets/images/file.png";
+                  onTap = () {
+                    controller.downloadCatalog();
+                  };
+                  description = "Download product list";
+                  break;
 
-          return Material(
-            color: Colors.grey.shade300,
-            borderRadius: BorderRadius.circular(9),
-            child: InkWell(
-              onTap: onTap,
-              borderRadius: BorderRadius.circular(9),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: Icon(icon, size: 50),
+                case 4:
+                  title = "Analysis";
+                  imagePath = "lib/assets/images/graph.png";
+                  onTap = () {
+                    //link webview
+                  };
+                  description = "View analysis of the products";
+                  break;
+              }
+
+              return SizedBox(
+                height: 120, // Adjust the height as needed
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 20),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF1EAFF),
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color(0xFF5B0888).withOpacity(0.2),
+                        spreadRadius: 2,
+                        blurRadius: 6,
+                        offset:
+                            const Offset(0, 4), // changes position of shadow
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 10),
-                  Text(title),
-                ],
-              ),
-            ),
-          );
-        },
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.all(10),
+                    onTap: onTap,
+                    leading: SizedBox(
+                      width: 60,
+                      height: 60,
+                      child: Image.asset(imagePath),
+                    ),
+                    title: Text(
+                      title,
+                      style: const TextStyle(
+                        color: Color(0xFF5B0888), // Change color
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    subtitle: Padding(
+                      padding: const EdgeInsets.only(top: 4.0),
+                      child: Text(
+                        description,
+                        style: const TextStyle(
+                          color: Color(0xFF5B0888), // Change color
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            }),
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
@@ -106,6 +156,7 @@ class HomeView extends GetView<HomeController> {
             Get.snackbar("Error", hasil["error"]);
           }
         },
+        backgroundColor: const Color(0xFFDCBFFF),
         child: Icon(Icons.logout),
       ),
     );
