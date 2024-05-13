@@ -15,7 +15,7 @@ class AuthController extends GetxController {
 
       return {
         "error": false,
-        "message": "Berhasil login.",
+        "message": "Login successfully.",
       };
     } on FirebaseAuthException catch (e) {
       return {
@@ -26,7 +26,7 @@ class AuthController extends GetxController {
       // Error general
       return {
         "error": true,
-        "message": "Tidak dapat login.",
+        "message": "Login unsuccessfully.",
       };
     }
   }
@@ -37,7 +37,7 @@ class AuthController extends GetxController {
 
       return {
         "error": false,
-        "message": "Berhasil logout.",
+        "message": "Logout successfully.",
       };
     } on FirebaseAuthException catch (e) {
       return {
@@ -48,7 +48,7 @@ class AuthController extends GetxController {
       // Error general
       return {
         "error": true,
-        "message": "Tidak dapat logout.",
+        "message": "Logout unsuccessfully.",
       };
     }
   }
