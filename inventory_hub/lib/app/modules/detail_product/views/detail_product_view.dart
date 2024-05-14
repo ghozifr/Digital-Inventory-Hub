@@ -23,9 +23,15 @@ class DetailProductView extends GetView<DetailProductController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DETAIL PRODUCT'),
+        title: const Text('DETAIL PRODUCT', style: TextStyle(
+        color: Color(0xFF5B0888),
+        fontWeight: FontWeight.bold,
+        ),
+      ),
+      backgroundColor: const Color(0xFFF1EAFF),
         centerTitle: true,
       ),
+      backgroundColor: const Color(0xFFF1EAFF),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
@@ -54,6 +60,10 @@ class DetailProductView extends GetView<DetailProductController> {
               labelText: "Product Code",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(9),
+                borderSide: const BorderSide(
+                  color: Colors.red, // Change the color to your desired color
+                  width: 2.0, // Adjust the width if needed
+                ),
               ),
             ),
           ),
@@ -66,6 +76,10 @@ class DetailProductView extends GetView<DetailProductController> {
               labelText: "Product Name",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(9),
+                borderSide: const BorderSide(
+                  color: Colors.red, // Change the color to your desired color
+                  width: 2.0, // Adjust the width if needed
+                ),
               ),
             ),
           ),
@@ -95,14 +109,14 @@ class DetailProductView extends GetView<DetailProductController> {
                   controller.isLoadingUpdate(false);
 
                   Get.snackbar(
-                    hasil["error"] == true ? "Error" : "Berhasil",
+                    hasil["error"] == true ? "Error" : "Success",
                     hasil["message"],
                     duration: const Duration(seconds: 2),
                   );
                 } else {
                   Get.snackbar(
                     "Error",
-                    "Semua data wajib diisi.",
+                    "All data must be filled in.",
                     duration: const Duration(seconds: 2),
                   );
                 }
@@ -113,6 +127,8 @@ class DetailProductView extends GetView<DetailProductController> {
                 borderRadius: BorderRadius.circular(9),
               ),
               padding: const EdgeInsets.symmetric(vertical: 20),
+              backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+              elevation: 5,
             ),
             child: Obx(
               () => Text(controller.isLoadingUpdate.isFalse
@@ -141,7 +157,7 @@ class DetailProductView extends GetView<DetailProductController> {
                       Get.back(); // Balik ke page all products
 
                       Get.snackbar(
-                        hasil["error"] == true ? "Error" : "Berhasil",
+                        hasil["error"] == true ? "Error" : "Success",
                         hasil["message"],
                         duration: const Duration(seconds: 2),
                       );
