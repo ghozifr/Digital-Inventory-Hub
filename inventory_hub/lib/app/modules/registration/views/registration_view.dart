@@ -12,14 +12,26 @@ class RegistrationView extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confpasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
 
   RegistrationView({super.key});
 
   void signUp() {
-    String email = _emailController.text;
-    String password = _passwordController.text;
-    _signupController.signUp(email, password);
+    if (formKey.currentState?.validate() ?? false) {
+      String email = _emailController.text;
+      String password = _passwordController.text;
+      String confirmPassword = _confirmPasswordController.text;
+      _signupController.signUp(email, password, confirmPassword);
+    // if (password != confirmPassword) {
+    //   Get.snackbar(
+    //     'Error',
+    //     'Passwords do not match.',
+    //     backgroundColor: Colors.red,
+    //     colorText: Colors.white,
+    //   );
+    //   return;
+    // }
+    }
   }
 
   @override
@@ -86,19 +98,18 @@ class RegistrationView extends StatelessWidget {
           // Confirm Password TextField
           TextField(
             autocorrect: false,
-            controller: _confpasswordController,
+            controller: _confirmPasswordController,
             keyboardType: TextInputType.text,
             obscureText: true,
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.lock),
               prefixIconColor: Color(0xFF5B0888),
-              labelText: "Confirm Password",
+              labelText: "Confirmation Password",
               border: InputBorder.none,
               fillColor: Color.fromARGB(255, 255, 255, 255),
               filled: true,
             ),
           ),
-
           const SizedBox(height: 15),
           TextButton(
             onPressed: () {
@@ -111,12 +122,21 @@ class RegistrationView extends StatelessWidget {
             onPressed: _signupController.isLoading.value
                 ? null
                 : () {
-                    signUp();
-                    // Navigate to the login page
+                    if (_confirmPasswordController.text != _passwordController.text) {
+                      Get.snackbar(
+                        'Error',
+                        'Passwords do not match.',
+                        backgroundColor: Colors.red,
+                        colorText: Colors.white,
+                      );
+                    } else {
+                      signUp();
+                      // Navigate to the login page
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => LoginView()),
                     );
+                    }
                   },
             style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(

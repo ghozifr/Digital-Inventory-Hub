@@ -9,10 +9,10 @@ class RegistrationController extends GetxController {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  //RxBool isHidden = true.obs;
+  RxBool isHidden = true.obs;
   RxBool isLoading = false.obs;
 
-  void signUp(String email, String password) async {
+  void signUp(String email, String password, String confirmPassword) async {
     try {
       isLoading.value = true;
       UserCredential userCredential =
