@@ -41,7 +41,7 @@ class DetailProductView extends GetView<DetailProductController> {
               SizedBox(
                 height: 200,
                 width: 200,
-                child: QrImage(
+                child: QrImageView(
                   data: product.code,
                   size: 200.0,
                   version: QrVersions.auto,
