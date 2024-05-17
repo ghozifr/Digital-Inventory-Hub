@@ -56,7 +56,7 @@ class ProductsView extends GetView<ProductsController> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(9),
                 ),
-                color: const Color(0xFFE5D4FF),
+                color: const Color.fromARGB(255, 255, 255, 255),
                 child: InkWell(
                   onTap: () {
                     Get.toNamed(Routes.detailProduct, arguments: product);
@@ -90,8 +90,8 @@ class ProductsView extends GetView<ProductsController> {
                           ),
                         ),
                         SizedBox(
-                          height: 50,
-                          width: 50,
+                          height: 100,
+                          width: 100,
                           child: QrImage(
                             data: product.code,
                             size: 200.0,

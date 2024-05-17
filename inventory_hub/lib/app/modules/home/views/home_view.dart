@@ -16,14 +16,14 @@ Widget build(BuildContext context) {
     appBar: AppBar(
       flexibleSpace: Center( // Center the image horizontally
         child: Image.asset(
-          'lib/assets/images/ihLogo.png',
-          width: 50, // Adjust width as needed
-          height: 50, // Adjust height as needed
+          'lib/assets/images/digital.png',
+          width: 150, // Adjust width as needed
+          height: 150, // Adjust height as needed
         ),
       ),
-      backgroundColor: const Color(0xFFF1EAFF),
+      backgroundColor: const Color(0xFFFFFFFF),
     ),
-    backgroundColor: const Color(0xFFF1EAFF),
+    backgroundColor: const Color(0xFFFFFFFF),
     body: SingleChildScrollView(
       physics: const AlwaysScrollableScrollPhysics(),
       child: Padding(
@@ -101,7 +101,7 @@ Widget build(BuildContext context) {
               child: Container(
                 margin: const EdgeInsets.only(bottom: 20),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF1EAFF),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
