@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:qr_code/app/modules/login/controllers/login_controller.dart';
 
 import 'app/controllers/auth_controller.dart';
 import 'app/modules/loading/loading_screen.dart';
@@ -15,6 +16,8 @@ void main() async {
   );
 
   Get.put(AuthController(), permanent: true);
+  // Register LoginController
+  Get.put(LoginController());
 
   runApp(MyApp());
 }
@@ -28,12 +31,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // UNTUK AUTO LOGIN -> FIREBASE AUTHENTICATION
     return StreamBuilder<User?>(
+      // stream: auth.authStateChanges(),
+      // builder: (context, snapAuth) {
+      //   if (snapAuth.connectionState == ConnectionState.waiting)
+      //     return const LoadingScreen();
       stream: auth.authStateChanges(),
       builder: (context, snapAuth) {
-        if (snapAuth.connectionState == ConnectionState.waiting) return const LoadingScreen();
+        if (snapAuth.connectionState == ConnectionState.waiting)
+          return const LoadingScreen();
+        Future.delayed(Duration(seconds: 2), () {
+          // Navigate to either home or login based on authentication status
+          if (snapAuth.hasData) {
+            Get.offAllNamed(Routes.home); // Navigate to home screen
+          } else {
+            Get.offAllNamed(Routes.login); // Navigate to login screen
+          }
+        });
         return GetMaterialApp(
-          title: "QR Code",
-          initialRoute: snapAuth.hasData ? Routes.home : Routes.login,
+          debugShowCheckedModeBanner: false,
+          initialRoute: Routes.splash,
+          initialBinding: BindingsBuilder(() {
+            // Register LoginController
+            Get.lazyPut(() => LoginController());
+          }),
           getPages: AppPages.routes,
         );
       },

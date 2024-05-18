@@ -13,9 +13,17 @@ class ProductsView extends GetView<ProductsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PRODUCTS'),
+        title: const Text(
+        'PRODUCT',
+        style: TextStyle(
+          color: Color(0xFF5B0888),
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      backgroundColor: const Color(0xFFF1EAFF),
         centerTitle: true,
       ),
+      backgroundColor: const Color(0xFFF1EAFF),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: controller.streamProducts(),
         builder: (context, snapProducts) {
@@ -48,13 +56,14 @@ class ProductsView extends GetView<ProductsController> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(9),
                 ),
+                color: const Color(0xFFE5D4FF),
                 child: InkWell(
                   onTap: () {
                     Get.toNamed(Routes.detailProduct, arguments: product);
                   },
                   borderRadius: BorderRadius.circular(9),
                   child: Container(
-                    height: 100,
+                    height: 112,
                     padding: const EdgeInsets.all(15),
                     child: Row(
                       children: [
@@ -65,19 +74,25 @@ class ProductsView extends GetView<ProductsController> {
                               Text(
                                 product.code,
                                 style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.bold, color: Color(0xFF5B0888), fontSize: 18,
                                 ),
                               ),
-                              const SizedBox(height: 5),
-                              Text(product.name),
-                              Text("Jumlah : ${product.qty}"),
+                              const SizedBox(height: 6),
+                              Text(product.name,
+                              style: const TextStyle(
+                                  color: Color(0xFF5B0888), fontSize: 16,
+                                ),),
+                              Text("Quantity : ${product.qty}",
+                              style: const TextStyle(
+                                  color: Color(0xFF5B0888), fontSize: 14,
+                                ),),
                             ],
                           ),
                         ),
                         SizedBox(
                           height: 50,
                           width: 50,
-                          child: QrImage(
+                          child: QrImageView(
                             data: product.code,
                             size: 200.0,
                             version: QrVersions.auto,
