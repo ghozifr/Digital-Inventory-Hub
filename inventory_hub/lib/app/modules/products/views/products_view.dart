@@ -20,10 +20,10 @@ class ProductsView extends GetView<ProductsController> {
           fontWeight: FontWeight.bold,
         ),
       ),
-      backgroundColor: const Color(0xFFF1EAFF),
+      backgroundColor: const Color(0XFFF8F9FF),
         centerTitle: true,
       ),
-      backgroundColor: const Color(0xFFF1EAFF),
+      backgroundColor: const Color(0XFFF8F9FF),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: controller.streamProducts(),
         builder: (context, snapProducts) {
@@ -51,7 +51,7 @@ class ProductsView extends GetView<ProductsController> {
             itemBuilder: (context, index) {
               ProductModel product = allProducts[index];
               return Card(
-                elevation: 5,
+                elevation: 7,
                 margin: const EdgeInsets.only(bottom: 20),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(9),

@@ -28,10 +28,10 @@ class DetailProductView extends GetView<DetailProductController> {
         fontWeight: FontWeight.bold,
         ),
       ),
-      backgroundColor: const Color(0xFFF1EAFF),
+      backgroundColor: const Color(0XFFF8F9FF),
         centerTitle: true,
       ),
-      backgroundColor: const Color(0xFFF1EAFF),
+      backgroundColor: const Color(0XFFF8F9FF),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
@@ -58,6 +58,8 @@ class DetailProductView extends GetView<DetailProductController> {
             maxLength: 10,
             decoration: InputDecoration(
               labelText: "Product Code",
+              filled: true,
+              fillColor: Colors.white,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(9),
                 borderSide: const BorderSide(
@@ -92,6 +94,7 @@ class DetailProductView extends GetView<DetailProductController> {
               labelText: "Quantity",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(9),
+                
               ),
             ),
           ),
