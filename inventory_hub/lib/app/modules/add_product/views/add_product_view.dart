@@ -94,7 +94,7 @@ Widget build(BuildContext context) {
             codeC.text = controllerR.textController.value.text;
             if (controller.isLoading.isFalse) {
               if (
-                //codeC.text.isNotEmpty &&
+                codeC.text.isNotEmpty &&
                   nameC.text.isNotEmpty &&
                   qtyC.text.isNotEmpty) {
                 controller.isLoading(true);
