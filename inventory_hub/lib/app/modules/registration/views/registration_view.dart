@@ -11,6 +11,7 @@ class RegistrationView extends StatelessWidget {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
 
   RegistrationView({super.key});
 
@@ -79,7 +80,22 @@ Widget build(BuildContext context) {
             filled: true,
           ),
         ),
-        
+        const SizedBox(height: 20),
+          // Confirm Password TextField
+          TextField(
+            autocorrect: false,
+            controller: _confirmPasswordController,
+            keyboardType: TextInputType.text,
+            obscureText: true,
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.lock),
+              prefixIconColor: Color(0xFF5B0888),
+              labelText: "Confirmation Password",
+              border: InputBorder.none,
+              fillColor: Color.fromARGB(255, 255, 255, 255),
+              filled: true,
+            ),
+          ),
         const SizedBox(height: 15),
         TextButton(
           onPressed: () {
@@ -92,12 +108,21 @@ Widget build(BuildContext context) {
           onPressed: _signupController.isLoading.value
               ? null
               : () {
-                  signUp();
-                  // Navigate to the login page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginView()),
-                  );
+                  if (_confirmPasswordController.text != _passwordController.text) {
+                      Get.snackbar(
+                        'Error',
+                        'Passwords do not match.',
+                        backgroundColor: Colors.red,
+                        colorText: Colors.white,
+                      );
+                    } else {
+                      signUp();
+                      // Navigate to the login page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginView()),
+                    );
+                    }
                 },
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
@@ -125,3 +150,5 @@ Widget build(BuildContext context) {
   );
 }
 }
+
+//tabahan1
