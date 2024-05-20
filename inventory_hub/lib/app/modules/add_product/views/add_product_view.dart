@@ -21,12 +21,45 @@ Widget build(BuildContext context) {
         ),
       ),
       centerTitle: true,
-      backgroundColor: const Color(0xFFF1EAFF),
+      backgroundColor: const Color(0XFFF8F9FF),
     ),
-    backgroundColor: const Color(0xFFF1EAFF),
+    backgroundColor: const Color(0XFFF8F9FF),
     body: ListView(
       padding: const EdgeInsets.all(20),
       children: [
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white, // Fill color
+            borderRadius: BorderRadius.circular(9),
+            boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF0D2750).withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 8,
+                      offset: const Offset(6, 6), // changes position of shadow
+                    ),
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                      spreadRadius: 1,
+                      blurRadius: 8,
+                      offset: const Offset(-6, -6), // changes position of shadow
+                    ),
+                  ],
+          ),
+          child: TextField(
+            autocorrect: false,
+            controller: codeC,
+            keyboardType: TextInputType.number,
+            maxLength: 10,
+            decoration: const InputDecoration(
+              labelText: "Product Code",
+              border: InputBorder.none, // Remove border
+              focusedBorder: InputBorder.none, // Remove focused border
+              enabledBorder: InputBorder.none, // Remove enabled border
+              contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            ),
+          ),
+        ),
         // TextField(
         //   autocorrect: false,
         //   controller: codeC,
@@ -55,36 +88,68 @@ Widget build(BuildContext context) {
             ),
             Obx(() => Text('Current Value: ${controllerR.productId}')),
         const SizedBox(height: 20),
-        TextField(
-          autocorrect: false,
-          controller: nameC,
-          keyboardType: TextInputType.text,
-          decoration: InputDecoration(
-            labelText: "Product Name",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(9),
-              borderSide: const BorderSide(color: Color(0xFFD0A2F7)), // Change border color
-            ),
-            focusedBorder: OutlineInputBorder( // Change border color when focused
-              borderRadius: BorderRadius.circular(9),
-              borderSide: const BorderSide(color: Color(0xFF5B0888)), // Change border color when focused
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white, // Fill color
+            borderRadius: BorderRadius.circular(9),
+            boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF0D2750).withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 8,
+                      offset: const Offset(6, 6), // changes position of shadow
+                    ),
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                      spreadRadius: 1,
+                      blurRadius: 8,
+                      offset: const Offset(-6, -6), // changes position of shadow
+                    ),
+                  ],
+          ),
+          child: TextField(
+            autocorrect: false,
+            controller: nameC,
+            keyboardType: TextInputType.text,
+            decoration: const InputDecoration(
+              labelText: "Product Name",
+              border: InputBorder.none, // Remove border
+              focusedBorder: InputBorder.none, // Remove focused border
+              enabledBorder: InputBorder.none, // Remove enabled border
+              contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             ),
           ),
         ),
         const SizedBox(height: 20),
-        TextField(
-          autocorrect: false,
-          controller: qtyC,
-          keyboardType: TextInputType.number,
-          decoration: InputDecoration(
-            labelText: "Quantity",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(9),
-              borderSide: const BorderSide(color: Color(0xFFD0A2F7)), // Change border color
-            ),
-            focusedBorder: OutlineInputBorder( // Change border color when focused
-              borderRadius: BorderRadius.circular(9),
-              borderSide: const BorderSide(color: Color(0xFF5B0888)), // Change border color when focused
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white, // Fill color
+            borderRadius: BorderRadius.circular(9),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFF0D2750).withOpacity(0.2),
+                spreadRadius: 1,
+                blurRadius: 8,
+                offset: const Offset(6, 6), // changes position of shadow
+              ),
+              BoxShadow(
+                color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                spreadRadius: 1,
+                blurRadius: 8,
+                offset: const Offset(-6, -6), // changes position of shadow
+              ),
+            ],
+          ),
+          child: TextField(
+            autocorrect: false,
+            controller: qtyC,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(
+              labelText: "Quantity",
+              border: InputBorder.none, // Remove border
+              focusedBorder: InputBorder.none, // Remove focused border
+              enabledBorder: InputBorder.none, // Remove enabled border
+              contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             ),
           ),
         ),
@@ -116,6 +181,8 @@ Widget build(BuildContext context) {
             }
           },
           style: ElevatedButton.styleFrom(
+            foregroundColor: const Color(0xFF5B0888), backgroundColor: Colors.white,
+            elevation: 5, // Text color
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(9),
             ),
