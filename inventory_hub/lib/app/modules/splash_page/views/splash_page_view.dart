@@ -18,14 +18,15 @@ class SplashPageView extends StatelessWidget {
       splash: Column(
         children: [
           Center(
-            child: LottieBuilder.asset("lib/assets/lottie/animation.json"),
+            child: LottieBuilder.asset("lib/assets/lottie/splash.json"),
           )
         ],
       ),
-      // nextScreen: HomeView(), kocak
+      // nextScreen: HomeView(),
       nextScreen: LoginView(),
       splashIconSize: 400,
       backgroundColor: Colors.white,
+      duration: 7000,
     );
   }
 }
