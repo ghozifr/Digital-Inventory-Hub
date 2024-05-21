@@ -16,14 +16,14 @@ Widget build(BuildContext context) {
     appBar: AppBar(
       flexibleSpace: Center( // Center the image horizontally
         child: Image.asset(
-          'lib/assets/images/ihLogo.png',
+          'lib/assets/images/logpo.png',
           width: 50, // Adjust width as needed
           height: 50, // Adjust height as needed
         ),
       ),
-      backgroundColor: const Color(0xFFF1EAFF),
+      backgroundColor: const Color(0XFFF8F9FF),
     ),
-    backgroundColor: const Color(0xFFF1EAFF),
+    backgroundColor: const Color(0XFFF8F9FF),
     body: SingleChildScrollView(
       physics: const AlwaysScrollableScrollPhysics(),
       child: Padding(
@@ -101,14 +101,20 @@ Widget build(BuildContext context) {
               child: Container(
                 margin: const EdgeInsets.only(bottom: 20),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF1EAFF),
+                  color: const Color(0XFFF8F9FF),
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF5B0888).withOpacity(0.2),
-                      spreadRadius: 2,
-                      blurRadius: 6,
-                      offset: const Offset(0, 4), // changes position of shadow
+                      color: const Color(0xFF0D2750).withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 8,
+                      offset: const Offset(6, 6), // changes position of shadow
+                    ),
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                      spreadRadius: 1,
+                      blurRadius: 8,
+                      offset: const Offset(-6, -6), // changes position of shadow
                     ),
                   ],
                 ),
@@ -154,7 +160,7 @@ Widget build(BuildContext context) {
           Get.snackbar("Error", hasil["error"]);
         }
       },
-      backgroundColor: const Color(0xFFDCBFFF),
+      backgroundColor: const Color(0xFFF8F9FF),
       child: Icon(Icons.logout),
     ),
   );

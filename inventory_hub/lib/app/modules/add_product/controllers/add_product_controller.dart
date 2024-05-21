@@ -1,12 +1,33 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:math';
+import 'package:flutter/material.dart';
 
 class AddProductController extends GetxController {
   RxBool isLoading = false.obs;
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+ RxInt productId = 0.obs;
+ late TextEditingController textController;
+
+  @override
+  void onInit() {
+    super.onInit();
+    // Generate a random product ID when the controller is initialized
+    generateRandomProductId();
+    textController = TextEditingController(text: productId.value.toString());
+    productId.listen((val) {
+      textController.text = val.toString();
+    });
+  }
+
+  void generateRandomProductId() {
+    Random random = Random();
+    productId.value = random.nextInt(1000000000);
+  }
 
   Future<Map<String, dynamic>> addProduct(Map<String, dynamic> data) async {
     try {
