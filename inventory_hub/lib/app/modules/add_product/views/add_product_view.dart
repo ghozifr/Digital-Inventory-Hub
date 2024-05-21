@@ -8,6 +8,7 @@ class AddProductView extends GetView<AddProductController> {
   final TextEditingController codeC = TextEditingController();
   final TextEditingController nameC = TextEditingController();
   final TextEditingController qtyC = TextEditingController();
+  final AddProductController controllerR = Get.put(AddProductController());
 @override
 Widget build(BuildContext context) {
   return Scaffold(
@@ -45,20 +46,18 @@ Widget build(BuildContext context) {
                     ),
                   ],
           ),
-          child: TextField(
-            autocorrect: false,
-            controller: codeC,
-            keyboardType: TextInputType.number,
-            maxLength: 10,
-            decoration: const InputDecoration(
-              labelText: "Product Code",
-              border: InputBorder.none, // Remove border
-              focusedBorder: InputBorder.none, // Remove focused border
-              enabledBorder: InputBorder.none, // Remove enabled border
-              contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-            ),
-          ),
+          
         ),
+        Text('Product ID:'),
+            TextField(
+              controller: controllerR.textController,
+              keyboardType: TextInputType.number,
+              onChanged: (value) {
+                // Update the productId in the controller whenever the value changes
+                controllerR.productId.value = int.tryParse(value) ?? 0;
+              },
+            ),
+            Obx(() => Text('Current Value: ${controllerR.productId}')),
         const SizedBox(height: 20),
         Container(
           decoration: BoxDecoration(
@@ -128,6 +127,7 @@ Widget build(BuildContext context) {
         const SizedBox(height: 35),
         ElevatedButton(
           onPressed: () async {
+            codeC.text = controllerR.textController.value.text;
             if (controller.isLoading.isFalse) {
               if (codeC.text.isNotEmpty &&
                   nameC.text.isNotEmpty &&

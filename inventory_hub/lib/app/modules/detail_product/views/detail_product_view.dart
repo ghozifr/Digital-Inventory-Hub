@@ -193,6 +193,21 @@ class DetailProductView extends GetView<DetailProductController> {
                 : "LOADING..."),
           ),
         ),
+        const SizedBox(height: 20),
+        ElevatedButton(
+          onPressed: () {
+            Get.toNamed("/analysis", arguments: product);
+          },
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(9),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            backgroundColor: const Color(0xFF5B0888),
+            elevation: 5,
+          ),
+          child: const Text("ADD PRODUCT"),
+        ),
         TextButton(
           onPressed: () {
             Get.defaultDialog(
