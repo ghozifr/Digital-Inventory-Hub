@@ -3,15 +3,24 @@ import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class AddProductController extends GetxController {
+
   RxBool isLoading = false.obs;
 
+
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  late FirebaseDatabase _database;
+
+  late DatabaseReference ref;
+
+  late TextEditingController textController;
   RxInt productId = 0.obs;
- late TextEditingController textController;
 
   @override
   void onInit() {
@@ -22,11 +31,72 @@ class AddProductController extends GetxController {
     productId.listen((val) {
       textController.text = val.toString();
     });
+    _database = FirebaseDatabase.instance;
+
+    ref = _database.ref();
+
+    textController = TextEditingController();
   }
 
   void generateRandomProductId() {
     Random random = Random();
     productId.value = random.nextInt(1000000000);
+  }
+
+  // void timeRecordToFrestore() {
+  //   final DateTime now = DateTime.now();
+  //   final String formattedTime = DateFormat('dd-MM-yyyy HH:mm:ss').format(now);
+
+  //   final DatabaseReference = ref = Database.ref('timestamps');
+  //   ref.push().set({'timestamps': formattedTime});
+  // }
+  // void onInit_ref() {
+
+  //   super.onInit();
+
+  //   _database = FirebaseDatabase.instance;
+
+  //   ref = _database.ref();
+
+  //   textController = TextEditingController();
+
+  // }
+
+
+  @override
+
+  void onClose() {
+
+    textController.dispose();
+
+    super.onClose();
+
+  }
+
+
+  String formatTime(DateTime now) {
+
+    final DateFormat formatter = DateFormat('dd-MM-yyyy HH:mm:ss');
+
+    return formatter.format(now);
+
+  }
+
+
+  Future<String> timeRecordToFrestore() async {
+
+    final DateTime now = DateTime.now();
+
+    final String formattedTime = formatTime(now);
+
+
+    final DatabaseReference timestampRef = ref.child('timestamps');
+
+    timestampRef.push().set({'timestamps': formattedTime});
+
+
+    return formattedTime;
+
   }
 
   Future<Map<String, dynamic>> addProduct(Map<String, dynamic> data) async {

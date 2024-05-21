@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:intl/intl.dart';
 import '../controllers/add_product_controller.dart';
 
 class AddProductView extends GetView<AddProductController> {
@@ -9,6 +9,7 @@ class AddProductView extends GetView<AddProductController> {
   final TextEditingController nameC = TextEditingController();
   final TextEditingController qtyC = TextEditingController();
   final AddProductController controllerR = Get.put(AddProductController());
+  final AddProductController timecontroller = Get.put(AddProductController());
 @override
 Widget build(BuildContext context) {
   return Scaffold(
@@ -127,7 +128,10 @@ Widget build(BuildContext context) {
         const SizedBox(height: 35),
         ElevatedButton(
           onPressed: () async {
+            final String formattedTime = await timecontroller.timeRecordToFrestore();
             codeC.text = controllerR.textController.value.text;
+            //timecontroller.timeRecordToFrestore();
+            //final String formattedTime = await timecontroller.timeRecordToFrestore();
             if (controller.isLoading.isFalse) {
               if (codeC.text.isNotEmpty &&
                   nameC.text.isNotEmpty &&
@@ -136,6 +140,7 @@ Widget build(BuildContext context) {
                 Map<String, dynamic> hasil = await controller.addProduct({
                   "code": codeC.text,
                   "name": nameC.text,
+                  "time": formattedTime,
                   "qty": int.tryParse(qtyC.text) ?? 0,
                 });
                 controller.isLoading(false);

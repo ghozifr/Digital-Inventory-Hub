@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import '../controllers/splash_page_controller.dart';
 
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:qr_code/app/modules/login/views/login_view.dart';
 
