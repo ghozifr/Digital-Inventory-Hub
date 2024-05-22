@@ -50,14 +50,7 @@ Widget build(BuildContext context) {
           
         ),
         Text('Product ID:'),
-            TextField(
-              controller: controllerR.textController,
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                // Update the productId in the controller whenever the value changes
-                controllerR.productId.value = int.tryParse(value) ?? 0;
-              },
-            ),
+            
             Obx(() => Text('Current Value: ${controllerR.productId}')),
         const SizedBox(height: 20),
         Container(
@@ -128,12 +121,12 @@ Widget build(BuildContext context) {
         const SizedBox(height: 35),
         ElevatedButton(
           onPressed: () async {
-            final String formattedTime = await timecontroller.timeRecordToFrestore();
-            codeC.text = controllerR.textController.value.text;
+            final String formattedTime = await timecontroller.timeRecordToFirestore();
+            codeC.text = controllerR.productId.toString();
             //timecontroller.timeRecordToFrestore();
             //final String formattedTime = await timecontroller.timeRecordToFrestore();
             if (controller.isLoading.isFalse) {
-              if (codeC.text.isNotEmpty &&
+              if (/**codeC.text.isNotEmpty &&**/
                   nameC.text.isNotEmpty &&
                   qtyC.text.isNotEmpty) {
                 controller.isLoading(true);

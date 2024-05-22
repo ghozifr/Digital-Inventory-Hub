@@ -10,15 +10,10 @@ class AddProductController extends GetxController {
 
   RxBool isLoading = false.obs;
 
-
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
   late FirebaseDatabase _database;
-
   late DatabaseReference ref;
-
   late TextEditingController textController;
   RxInt productId = 0.obs;
 
@@ -32,9 +27,7 @@ class AddProductController extends GetxController {
       textController.text = val.toString();
     });
     _database = FirebaseDatabase.instance;
-
     ref = _database.ref();
-
     textController = TextEditingController();
   }
 
@@ -64,44 +57,28 @@ class AddProductController extends GetxController {
 
 
   @override
-
   void onClose() {
-
     textController.dispose();
-
     super.onClose();
-
   }
 
 
   String formatTime(DateTime now) {
-
     final DateFormat formatter = DateFormat('dd-MM-yyyy HH:mm:ss');
-
     return formatter.format(now);
-
   }
 
-
-  Future<String> timeRecordToFrestore() async {
-
+  Future<String> timeRecordToFirestore() async {
     final DateTime now = DateTime.now();
-
     final String formattedTime = formatTime(now);
-
-
     final DatabaseReference timestampRef = ref.child('timestamps');
-
     timestampRef.push().set({'timestamps': formattedTime});
 
-
     return formattedTime;
-
   }
 
   Future<Map<String, dynamic>> addProduct(Map<String, dynamic> data) async {
     try {
-      
       // Get the current user
       User? user = _auth.currentUser;
       if (user != null) {
