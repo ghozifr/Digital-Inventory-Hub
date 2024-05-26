@@ -1,23 +1,51 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
+import 'package:charts_flutter/flutter.dart' as charts;
 import '../controllers/analysis_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class AnalysisView extends GetView<AnalysisController> {
-  const AnalysisView({Key? key}) : super(key: key);
+class AnalysisView extends StatelessWidget {
+  final AnalysisController _controller = Get.put(AnalysisController());
+String userUid = 'VmjbH7xFrUNoPcftraltP726NbD2';
+String productUid = 'ycGuwu2QkKkWafnZWgzM';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('AnalysisView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'AnalysisView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      appBar: AppBar(title: const Text('Analysis')),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: [
+          StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+            stream: _controller.getChartData(userUid, productUid),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+
+              if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                return const Center(child: Text('No data available'));
+              }
+
+              List<charts.Series<Map<String, dynamic>, String>> series = [
+                charts.Series<Map<String, dynamic>, String>(
+                  id: 'Sales',
+                  domainFn: (Map<String, dynamic> data, _) => data['updatedAt'].toString(),
+                  measureFn: (Map<String, dynamic> data, _) => data['qty'],
+                  data: snapshot.data!.docs.map((doc) => doc.data()).toList(),
+                )
+              ];
+
+              return SizedBox(
+                height: 400,
+                child: charts.BarChart(
+                  series,
+                  animate: true,
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

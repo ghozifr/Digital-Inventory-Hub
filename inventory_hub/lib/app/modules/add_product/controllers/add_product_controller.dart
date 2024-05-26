@@ -7,7 +7,6 @@ import 'package:intl/intl.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class AddProductController extends GetxController {
-
   RxBool isLoading = false.obs;
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -20,7 +19,6 @@ class AddProductController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Generate a random product ID when the controller is initialized
     generateRandomProductId();
     textController = TextEditingController(text: productId.value.toString());
     productId.listen((val) {
@@ -36,32 +34,11 @@ class AddProductController extends GetxController {
     productId.value = random.nextInt(1000000000);
   }
 
-  // void timeRecordToFrestore() {
-  //   final DateTime now = DateTime.now();
-  //   final String formattedTime = DateFormat('dd-MM-yyyy HH:mm:ss').format(now);
-
-  //   final DatabaseReference = ref = Database.ref('timestamps');
-  //   ref.push().set({'timestamps': formattedTime});
-  // }
-  // void onInit_ref() {
-
-  //   super.onInit();
-
-  //   _database = FirebaseDatabase.instance;
-
-  //   ref = _database.ref();
-
-  //   textController = TextEditingController();
-
-  // }
-
-
   @override
   void onClose() {
     textController.dispose();
     super.onClose();
   }
-
 
   String formatTime(DateTime now) {
     final DateFormat formatter = DateFormat('dd-MM-yyyy HH:mm:ss');
@@ -79,45 +56,36 @@ class AddProductController extends GetxController {
 
   Future<Map<String, dynamic>> addProduct(Map<String, dynamic> data) async {
     try {
-      // Get the current user
       User? user = _auth.currentUser;
       if (user != null) {
-        // Get the user's document reference
-        // DocumentReference userDocRef = firestore.collection('users').doc(user.uid);
+        CollectionReference productsCollection = firestore.collection('users').doc(user.uid).collection('products');
 
-        // Create a new document in the "profile" subcollection
-        CollectionReference profileDocRef = firestore.collection('users/${user.uid}/products');
-
-        // Set data for the profile document
-        // await profileDocRef.set({
-        //   'username': _usernameController.text,
-        //   // Add more fields as needed
-        // });
-
-        // Optionally, you can navigate back to the home page or another page after data submission
-        // Navigator.pop(context);
-      
-
-      var hasil = await profileDocRef.add(data);
-      await profileDocRef.doc(hasil.id).update({
-        "productId": hasil.id,
+        var hasil = await productsCollection.add(data);
+        await productsCollection.doc(hasil.id).update({
+          "productId": hasil.id,
         });
+
+        // Add a new document to the 'timedate' subcollection
+        await productsCollection.doc(hasil.id).collection('timedate').add({
+          'timestamp': FieldValue.serverTimestamp(),
+          'data': 'Initial timedate entry'
+        });
+
+        return {
+          "error": false,
+          "message": "Product added successfully.",
+        };
       }
-
-
       return {
-        "error": false,
-        "message": "Product added successfully.",
+        "error": true,
+        "message": "User is not logged in.",
       };
     } catch (e) {
-      // Error general
       print(e);
       return {
         "error": true,
-        "message": "Added product was unsuccessful.",
+        "message": "Adding product was unsuccessful.",
       };
     }
   }
-
-
 }

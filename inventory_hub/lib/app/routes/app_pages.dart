@@ -66,7 +66,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.analysis,
-      page: () => const AnalysisView(),
+      page: () =>  AnalysisView(),
       binding: AnalysisBinding(),
     ),
   ];
