@@ -3,13 +3,22 @@ import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class AddProductController extends GetxController {
   RxBool isLoading = false.obs;
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  late FirebaseDatabase _database;
+  late DatabaseReference ref;
+  late TextEditingController textController;
+  RxInt productId = 0.obs;
 
+  @override
+  void onInit() {
+    super.onInit();
  RxInt productId = 0.obs;
  late TextEditingController textController;
 
@@ -22,55 +31,77 @@ class AddProductController extends GetxController {
     productId.listen((val) {
       textController.text = val.toString();
     });
+    _database = FirebaseDatabase.instance;
+    ref = _database.ref();
+    textController = TextEditingController();
   }
 
   void generateRandomProductId() {
     Random random = Random();
     productId.value = random.nextInt(1000000000);
   }
+  @override
+  void onClose() {
+    textController.dispose();
+    super.onClose();
+  }
 
+  String formatTime(DateTime now) {
+    final DateFormat formatter = DateFormat('dd-MM-yyyy HH:mm:ss');
+    return formatter.format(now);
+  }
+
+  Future<String> timeRecordToFirestore() async {
+    final DateTime now = DateTime.now();
+    final String formattedTime = formatTime(now);
+    final DatabaseReference timestampRef = ref.child('timestamps');
+    timestampRef.push().set({'timestamps': formattedTime});
+
+    return formattedTime;
+  }
+
+  String formatCurrentTime() {
+    final DateTime now = DateTime.now();
+    final DateFormat formatter = DateFormat('dd-MM-yyyy HH:mm:ss');
+    return formatter.format(now);
+  }
   Future<Map<String, dynamic>> addProduct(Map<String, dynamic> data) async {
-    try {
-      
-      // Get the current user
-      User? user = _auth.currentUser;
-      if (user != null) {
-        // Get the user's document reference
-        // DocumentReference userDocRef = firestore.collection('users').doc(user.uid);
+  try {
+    User? user = _auth.currentUser;
+    if (user != null) {
+      CollectionReference productsCollection = firestore.collection('users').doc(user.uid).collection('products');
 
-        // Create a new document in the "profile" subcollection
-        CollectionReference profileDocRef = firestore.collection('users/${user.uid}/products');
+      // Add the product data to the 'products' collection
+      var hasil = await productsCollection.add(data);
 
-        // Set data for the profile document
-        // await profileDocRef.set({
-        //   'username': _usernameController.text,
-        //   // Add more fields as needed
-        // });
-
-        // Optionally, you can navigate back to the home page or another page after data submission
-        // Navigator.pop(context);
-      
-
-      var hasil = await profileDocRef.add(data);
-      await profileDocRef.doc(hasil.id).update({
+      // Update the product document to include its own ID
+      await productsCollection.doc(hasil.id).update({
         "productId": hasil.id,
-        });
-      }
+      });
 
+      // Set a custom document ID for the 'timedate' subcollection using current time
+      String timestampId = DateTime.now().millisecondsSinceEpoch.toString();
+      await productsCollection.doc(hasil.id).collection('timedate').doc(timestampId).set({
+        'qty': data["qty"],
+        'updatedAt': formatCurrentTime(),
+      });
 
       return {
         "error": false,
         "message": "Product added successfully.",
       };
-    } catch (e) {
-      // Error general
-      print(e);
-      return {
-        "error": true,
-        "message": "Added product was unsuccessful.",
-      };
     }
+    return {
+      "error": true,
+      "message": "User is not logged in.",
+    };
+  } catch (e) {
+    print(e);
+    return {
+      "error": true,
+      "message": "Adding product was unsuccessful.",
+    };
   }
-
+}
 
 }

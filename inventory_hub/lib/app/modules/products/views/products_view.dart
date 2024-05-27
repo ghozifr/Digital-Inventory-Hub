@@ -9,11 +9,11 @@ import '../controllers/products_controller.dart';
 
 class ProductsView extends GetView<ProductsController> {
   const ProductsView({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text(
         'PRODUCT',
         style: TextStyle(
           color: Color(0xFF5B0888),
@@ -21,74 +21,102 @@ class ProductsView extends GetView<ProductsController> {
         ),
       ),
       backgroundColor: const Color(0XFFF8F9FF),
-        centerTitle: true,
-      ),
-      backgroundColor: const Color(0XFFF8F9FF),
-      body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-        stream: controller.streamProducts(),
-        builder: (context, snapProducts) {
-          if (snapProducts.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
+      centerTitle: true,
+    ),
+    backgroundColor: const Color(0XFFF8F9FF),
+    body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+      stream: controller.streamProducts(),
+      builder: (context, snapProducts) {
+        if (snapProducts.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
 
-          if (snapProducts.data!.docs.isEmpty) {
-            return const Center(
-              child: Text("No products"),
-            );
-          }
+        if (snapProducts.data!.docs.isEmpty) {
+          return const Center(
+            child: Text("No products"),
+          );
+        }
 
-          List<ProductModel> allProducts = [];
+        List<ProductModel> allProducts = [];
 
-          for (var element in snapProducts.data!.docs) {
-            allProducts.add(ProductModel.fromJson(element.data()));
-          }
+        for (var element in snapProducts.data!.docs) {
+          allProducts.add(ProductModel.fromJson(element.data()));
+        }
 
-          return ListView.builder(
-            itemCount: allProducts.length,
-            padding: const EdgeInsets.all(20),
-            itemBuilder: (context, index) {
-              ProductModel product = allProducts[index];
-              return Card(
-                elevation: 7,
-                margin: const EdgeInsets.only(bottom: 20),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(9),
-                ),
-                color: const Color.fromARGB(255, 255, 255, 255),
-                child: InkWell(
-                  onTap: () {
-                    Get.toNamed(Routes.detailProduct, arguments: product);
-                  },
-                  borderRadius: BorderRadius.circular(9),
-                  child: Container(
-                    height: 112,
-                    padding: const EdgeInsets.all(15),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                product.code,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold, color: Color(0xFF5B0888), fontSize: 18,
-                                ),
+        return ListView.builder(
+          itemCount: allProducts.length,
+          padding: const EdgeInsets.all(20),
+          itemBuilder: (context, index) {
+            ProductModel product = allProducts[index];
+            return Container(
+              margin: const EdgeInsets.only(bottom: 20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(9),
+                boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF0D2750).withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 8,
+                      offset: const Offset(6, 6), // changes position of shadow
+                    ),
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                      spreadRadius: 1,
+                      blurRadius: 8,
+                      offset: const Offset(-6, -6), // changes position of shadow
+                    ),
+                  ],
+              ),
+              child: InkWell(
+                onTap: () {
+                  Get.toNamed(Routes.detailProduct, arguments: product);
+                },
+                borderRadius: BorderRadius.circular(9),
+                child: Container(
+                  height: 112,
+                  padding: const EdgeInsets.all(15),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              product.code,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF5B0888),
+                                fontSize: 18,
                               ),
-                              const SizedBox(height: 6),
-                              Text(product.name,
+                            ),
+                            const SizedBox(height: 6),
+                            Text(
+                              product.name,
                               style: const TextStyle(
-                                  color: Color(0xFF5B0888), fontSize: 16,
-                                ),),
-                              Text("Quantity : ${product.qty}",
+                                color: Color(0xFF5B0888),
+                                fontSize: 16,
+                              ),
+                            ),
+                            Text(
+                              "Quantity : ${product.qty}",
                               style: const TextStyle(
-                                  color: Color(0xFF5B0888), fontSize: 14,
-                                ),),
-                            ],
-                          ),
+                                color: Color(0xFF5B0888),
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
                         ),
+                      ),
+                      SizedBox(
+                        height: 100,
+                        width: 100,
+                        child: QrImage(
+                          data: product.code,
+                          size: 200.0,
+                          version: QrVersions.auto,
                         SizedBox(
                           height: 50,
                           width: 50,
@@ -98,15 +126,17 @@ class ProductsView extends GetView<ProductsController> {
                             version: QrVersions.auto,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-              );
-            },
-          );
-        },
-      ),
-    );
-  }
+              ),
+            );
+          },
+        );
+      },
+    ),
+  );
+}
+
 }

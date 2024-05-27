@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import '../../../data/models/product_model.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-
 import '../controllers/detail_product_controller.dart';
+import '../../../routes/app_pages.dart';
 
 class DetailProductView extends GetView<DetailProductController> {
   DetailProductView({Key? key}) : super(key: key);
@@ -17,18 +16,23 @@ class DetailProductView extends GetView<DetailProductController> {
 
   @override
   Widget build(BuildContext context) {
+    // Log the product view
+    controller.logProductView(product.productId);
+
     codeC.text = product.code;
     nameC.text = product.name;
     qtyC.text = "${product.qty}";
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DETAIL PRODUCT', style: TextStyle(
-        color: Color(0xFF5B0888),
-        fontWeight: FontWeight.bold,
+        title: const Text(
+          'DETAIL PRODUCT',
+          style: TextStyle(
+            color: Color(0xFF5B0888),
+            fontWeight: FontWeight.bold,
+          ),
         ),
-      ),
-      backgroundColor: const Color(0XFFF8F9FF),
+        backgroundColor: const Color(0XFFF8F9FF),
         centerTitle: true,
       ),
       backgroundColor: const Color(0XFFF8F9FF),
@@ -50,51 +54,103 @@ class DetailProductView extends GetView<DetailProductController> {
             ],
           ),
           const SizedBox(height: 20),
-          TextField(
-            autocorrect: false,
-            controller: codeC,
-            keyboardType: TextInputType.number,
-            readOnly: true,
-            maxLength: 10,
-            decoration: InputDecoration(
-              labelText: "Product Code",
-              filled: true,
-              fillColor: Colors.white,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(9),
-                borderSide: const BorderSide(
-                  color: Colors.red, // Change the color to your desired color
-                  width: 2.0, // Adjust the width if needed
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(9),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFF0D2750).withOpacity(0.2),
+                  spreadRadius: 1,
+                  blurRadius: 8,
+                  offset: const Offset(6, 6),
                 ),
+                BoxShadow(
+                  color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                  spreadRadius: 1,
+                  blurRadius: 8,
+                  offset: const Offset(-6, -6),
+                ),
+              ],
+            ),
+            child: TextField(
+              autocorrect: false,
+              controller: codeC,
+              keyboardType: TextInputType.number,
+              readOnly: true,
+              maxLength: 10,
+              decoration: const InputDecoration(
+                labelText: "Product Code",
+                filled: true,
+                fillColor: Colors.white,
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.all(15),
               ),
             ),
           ),
           const SizedBox(height: 20),
-          TextField(
-            autocorrect: false,
-            controller: nameC,
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-              labelText: "Product Name",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(9),
-                borderSide: const BorderSide(
-                  color: Colors.red, // Change the color to your desired color
-                  width: 2.0, // Adjust the width if needed
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFF0D2750).withOpacity(0.2),
+                  spreadRadius: 1,
+                  blurRadius: 8,
+                  offset: const Offset(6, 6),
                 ),
+                BoxShadow(
+                  color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                  spreadRadius: 1,
+                  blurRadius: 8,
+                  offset: const Offset(-6, -6),
+                ),
+              ],
+            ),
+            child: TextField(
+              autocorrect: false,
+              controller: nameC,
+              keyboardType: TextInputType.text,
+              decoration: const InputDecoration(
+                labelText: "Product Name",
+                filled: true,
+                fillColor: Colors.white,
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.all(15),
               ),
             ),
           ),
           const SizedBox(height: 20),
-          TextField(
-            autocorrect: false,
-            controller: qtyC,
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              labelText: "Quantity",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(9),
-                
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFF0D2750).withOpacity(0.2),
+                  spreadRadius: 1,
+                  blurRadius: 8,
+                  offset: const Offset(6, 6),
+                ),
+                BoxShadow(
+                  color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                  spreadRadius: 1,
+                  blurRadius: 8,
+                  offset: const Offset(-6, -6),
+                ),
+              ],
+            ),
+            child: TextField(
+              autocorrect: false,
+              controller: qtyC,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: "Quantity",
+                filled: true,
+                fillColor: Colors.white,
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.all(15),
               ),
             ),
           ),
@@ -139,11 +195,27 @@ class DetailProductView extends GetView<DetailProductController> {
                   : "LOADING..."),
             ),
           ),
+          const SizedBox(height: 20),
+          ElevatedButton(
+  onPressed: () {
+    controller.goToAnalysisView(product);
+  },
+  style: ElevatedButton.styleFrom(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(9),
+    ),
+    padding: const EdgeInsets.symmetric(vertical: 20),
+    backgroundColor: const Color(0xFF5B0888),
+    elevation: 5,
+  ),
+  child: const Text("ANALYSIS PRODUCT"),
+),
+
           TextButton(
             onPressed: () {
               Get.defaultDialog(
                 title: "Delete Product",
-                middleText: "Are you sure to delete this product ?",
+                middleText: "Are you sure to delete this product?",
                 actions: [
                   OutlinedButton(
                     onPressed: () => Get.back(),
@@ -156,8 +228,8 @@ class DetailProductView extends GetView<DetailProductController> {
                           await controller.deleteProduct(product.productId);
                       controller.isLoadingDelete(false);
 
-                      Get.back(); // tutup dialog
-                      Get.back(); // Balik ke page all products
+                      Get.back(); // Close dialog
+                      Get.back(); // Navigate back to all products
 
                       Get.snackbar(
                         hasil["error"] == true ? "Error" : "Success",

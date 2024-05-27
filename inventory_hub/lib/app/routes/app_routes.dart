@@ -11,6 +11,7 @@ abstract class Routes {
   static const registration = _Paths.registration;
   //static const splash = _Paths.splash;
   static const splash = _Paths.splash;
+  static const analysis = _Paths.analysis;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const registration = '/registration';
   //static const splash = '/splash';
   static const splash = '/splash-page';
+  static const analysis = '/analysis';
 }
