@@ -54,3 +54,6 @@ class AnalysisView extends StatelessWidget {
           ),
         ],
       ),
+          );
+  }
+}
