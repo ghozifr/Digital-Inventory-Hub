@@ -5,6 +5,7 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import '../controllers/analysis_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 //check update
+// check for main
 class AnalysisView extends StatelessWidget {
   final AnalysisController _controller = Get.put(AnalysisController());
 
