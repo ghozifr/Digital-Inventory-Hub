@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../data/models/product_model.dart';
@@ -17,6 +16,9 @@ class DetailProductView extends GetView<DetailProductController> {
 
   @override
   Widget build(BuildContext context) {
+    // Log the product view
+    controller.logProductView(product.productId);
+
     codeC.text = product.code;
     nameC.text = product.name;
     qtyC.text = "${product.qty}";
@@ -195,19 +197,20 @@ class DetailProductView extends GetView<DetailProductController> {
           ),
           const SizedBox(height: 20),
           ElevatedButton(
-            onPressed: () {
-               Get.toNamed(Routes.analysis);
-            },
-            style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(9),
-              ),
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              backgroundColor: const Color(0xFF5B0888),
-              elevation: 5,
-            ),
-            child: const Text("ANALYSIS PRODUCT"),
-          ),
+  onPressed: () {
+    controller.goToAnalysisView(product);
+  },
+  style: ElevatedButton.styleFrom(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(9),
+    ),
+    padding: const EdgeInsets.symmetric(vertical: 20),
+    backgroundColor: const Color(0xFF5B0888),
+    elevation: 5,
+  ),
+  child: const Text("ANALYSIS PRODUCT"),
+),
+
           TextButton(
             onPressed: () {
               Get.defaultDialog(

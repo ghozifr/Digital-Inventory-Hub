@@ -54,38 +54,48 @@ class AddProductController extends GetxController {
     return formattedTime;
   }
 
+  String formatCurrentTime() {
+    final DateTime now = DateTime.now();
+    final DateFormat formatter = DateFormat('dd-MM-yyyy HH:mm:ss');
+    return formatter.format(now);
+  }
   Future<Map<String, dynamic>> addProduct(Map<String, dynamic> data) async {
-    try {
-      User? user = _auth.currentUser;
-      if (user != null) {
-        CollectionReference productsCollection = firestore.collection('users').doc(user.uid).collection('products');
+  try {
+    User? user = _auth.currentUser;
+    if (user != null) {
+      CollectionReference productsCollection = firestore.collection('users').doc(user.uid).collection('products');
 
-        var hasil = await productsCollection.add(data);
-        await productsCollection.doc(hasil.id).update({
-          "productId": hasil.id,
-        });
+      // Add the product data to the 'products' collection
+      var hasil = await productsCollection.add(data);
 
-        // Add a new document to the 'timedate' subcollection
-        await productsCollection.doc(hasil.id).collection('timedate').add({
-          'timestamp': FieldValue.serverTimestamp(),
-          'data': 'Initial timedate entry'
-        });
+      // Update the product document to include its own ID
+      await productsCollection.doc(hasil.id).update({
+        "productId": hasil.id,
+      });
 
-        return {
-          "error": false,
-          "message": "Product added successfully.",
-        };
-      }
+      // Set a custom document ID for the 'timedate' subcollection using current time
+      String timestampId = DateTime.now().millisecondsSinceEpoch.toString();
+      await productsCollection.doc(hasil.id).collection('timedate').doc(timestampId).set({
+        'qty': data["qty"],
+        'updatedAt': formatCurrentTime(),
+      });
+
       return {
-        "error": true,
-        "message": "User is not logged in.",
-      };
-    } catch (e) {
-      print(e);
-      return {
-        "error": true,
-        "message": "Adding product was unsuccessful.",
+        "error": false,
+        "message": "Product added successfully.",
       };
     }
+    return {
+      "error": true,
+      "message": "User is not logged in.",
+    };
+  } catch (e) {
+    print(e);
+    return {
+      "error": true,
+      "message": "Adding product was unsuccessful.",
+    };
   }
+}
+
 }

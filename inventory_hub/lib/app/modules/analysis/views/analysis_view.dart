@@ -7,10 +7,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AnalysisView extends StatelessWidget {
   final AnalysisController _controller = Get.put(AnalysisController());
-String userUid = 'VmjbH7xFrUNoPcftraltP726NbD2';
-String productUid = 'ycGuwu2QkKkWafnZWgzM';
+
   @override
   Widget build(BuildContext context) {
+    final Map<String, dynamic> args = Get.arguments as Map<String, dynamic>;
+    final String userUid = args['userUid'];
+    final String productUid = args['productUid'];
+
+    // Print statements to verify arguments
+    print("User UID: $userUid");
+    print("Product UID: $productUid");
+
     return Scaffold(
       appBar: AppBar(title: const Text('Analysis')),
       body: ListView(
