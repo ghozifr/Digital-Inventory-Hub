@@ -117,6 +117,14 @@ Widget build(BuildContext context) {
                           data: product.code,
                           size: 200.0,
                           version: QrVersions.auto,
+                        SizedBox(
+                          height: 50,
+                          width: 50,
+                          child: QrImageView(
+                            data: product.code,
+                            size: 200.0,
+                            version: QrVersions.auto,
+                          ),
                         ),
                       ),
                     ],

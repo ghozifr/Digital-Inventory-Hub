@@ -19,6 +19,13 @@ class AddProductController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+ RxInt productId = 0.obs;
+ late TextEditingController textController;
+
+  @override
+  void onInit() {
+    super.onInit();
+    // Generate a random product ID when the controller is initialized
     generateRandomProductId();
     textController = TextEditingController(text: productId.value.toString());
     productId.listen((val) {
@@ -33,7 +40,6 @@ class AddProductController extends GetxController {
     Random random = Random();
     productId.value = random.nextInt(1000000000);
   }
-
   @override
   void onClose() {
     textController.dispose();
