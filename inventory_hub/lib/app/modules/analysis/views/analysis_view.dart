@@ -9,19 +9,26 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class AnalysisView extends StatelessWidget {
   final AnalysisController _controller = Get.put(AnalysisController());
 
-  @override
-  Widget build(BuildContext context) {
-    final Map<String, dynamic> args = Get.arguments as Map<String, dynamic>;
-    final String userUid = args['userUid'];
-    final String productUid = args['productUid'];
+ @override
+Widget build(BuildContext context) {
+  final Map<String, dynamic> args = Get.arguments as Map<String, dynamic>;
+  final String userUid = args['userUid'];
+  final String productUid = args['productUid'];
 
-    // Print statements to verify arguments
-    print("User UID: $userUid");
-    print("Product UID: $productUid");
+  // Print statements to verify arguments
+  print("User UID: $userUid");
+  print("Product UID: $productUid");
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('Analysis')),
-      body: ListView(
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text('STATISTICS', style: TextStyle(color: Color(0xFFFFFFFF), fontWeight: FontWeight.bold, fontSize: 20),),
+      centerTitle: true,
+      backgroundColor: const Color(0xFF2F2D4E), // Set your desired AppBar color
+    ),
+    backgroundColor: const Color(0xFF2F2D4E), // Set your desired Scaffold background color
+    body: Container(
+      color: const Color(0xFFFFFFFF), // Set your desired background color for ListView
+      child: ListView(
         padding: const EdgeInsets.all(20),
         children: [
           StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
@@ -55,6 +62,7 @@ class AnalysisView extends StatelessWidget {
           ),
         ],
       ),
-          );
-  }
+    ),
+  );
+}
 }

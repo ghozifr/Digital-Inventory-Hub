@@ -101,7 +101,10 @@ Widget build(BuildContext context) {
           onPressed: () {
             Get.toNamed(Routes.login);
           },
-          child: Text("Already have an account?"),
+          child: const Text("Already have an account?",
+          style: TextStyle(
+              color: Colors.white, // Change this to your desired color
+            ),),
         ),
         const SizedBox(height: 35),
         ElevatedButton(

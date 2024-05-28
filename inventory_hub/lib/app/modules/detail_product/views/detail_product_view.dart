@@ -50,10 +50,20 @@ Widget build(BuildContext context) {
                 size: 180.0,
                 version: QrVersions.auto,
                 foregroundColor: const Color(0xFFFFFFFF), // Set your desired color here
-                // backgroundColor: Colors.white, // Optional: Set background color
               ),
             ),
           ],
+        ),
+        const SizedBox(height: 10), 
+        const Center(
+          child: Text(
+            'Edit the details of product',
+            style: TextStyle(
+              color: Colors.white, // Change this to your desired color
+              fontSize: 16,
+              fontStyle: FontStyle.italic, 
+            ),
+          ),
         ),
         const SizedBox(height: 20),
         Container(
@@ -209,7 +219,7 @@ Widget build(BuildContext context) {
             backgroundColor: const Color(0xFFFFFFFF),
             elevation: 5,
           ),
-          child: const Text("ANALYSIS PRODUCT"),
+          child: const Text("PRODUCT STATISTICS RECORDS"),
         ),
         TextButton(
           onPressed: () {
@@ -265,6 +275,4 @@ Widget build(BuildContext context) {
     ),
   );
 }
-
-
 }

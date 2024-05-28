@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -76,7 +77,7 @@ Widget build(BuildContext context) {
                 },
                 borderRadius: BorderRadius.circular(9),
                 child: Container(
-                  height: 112,
+                  height: 127,
                   padding: const EdgeInsets.all(15),
                   child: Row(
                     children: [
@@ -92,7 +93,7 @@ Widget build(BuildContext context) {
                                 fontSize: 18,
                               ),
                             ),
-                            const SizedBox(height: 6),
+                            const SizedBox(height: 4),
                             Text(
                               product.name,
                               style: const TextStyle(
@@ -105,6 +106,15 @@ Widget build(BuildContext context) {
                               style: const TextStyle(
                                 color: Color(0xFF2F2D4E),
                                 fontSize: 14,
+                              ),
+                            ),
+                            const SizedBox(height: 2),
+                            const Text(
+                              "Tap here to see more details",
+                              style: TextStyle(
+                                color: Color(0xFF2F2D4E),
+                                fontSize: 14,
+                                fontStyle:FontStyle.italic,
                               ),
                             ),
                           ],

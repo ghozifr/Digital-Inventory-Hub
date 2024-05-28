@@ -90,7 +90,11 @@ Widget build(BuildContext context) {
           onPressed: () {
             Get.toNamed(Routes.registration);
           },
-          child: Text("Create an account"),
+          child: const Text("Create an account",
+          style: TextStyle(
+              color: Colors.white, // Change this to your desired color
+            ),
+          ),
         ),
         const SizedBox(height: 35),
         ElevatedButton(

@@ -49,8 +49,18 @@ class AddProductView extends GetView<AddProductController> {
                   ],
             ),
           ),
-          const Text('Product ID:'),
-          Obx(() => Text('Current Value: ${controllerR.productId}')),
+          const Text(
+          'Product ID',
+              style: TextStyle(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold, // Change this to your desired color
+              ),
+            ),
+        Obx(() => Text(
+          'Current Value: ${controllerR.productId}',
+          style: const TextStyle(
+            color: Colors.white, // Change this to your desired color
+          ),
+        )),
           const SizedBox(height: 20),
           Container(
             decoration: BoxDecoration(
@@ -146,7 +156,7 @@ class AddProductView extends GetView<AddProductController> {
               }
             },
             style: ElevatedButton.styleFrom(
-              foregroundColor: const Color(0xFF5B0888),
+              foregroundColor: const Color(0xFF2F2D4E),
               backgroundColor: Colors.white,
               elevation: 5,
               shape: RoundedRectangleBorder(
