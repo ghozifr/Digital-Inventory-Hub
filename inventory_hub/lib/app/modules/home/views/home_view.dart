@@ -6,6 +6,7 @@ import '../../../controllers/auth_controller.dart';
 import '../../../routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
+//check main
 
 class HomeView extends GetView<HomeController> {
   HomeView({Key? key}) : super(key: key);
