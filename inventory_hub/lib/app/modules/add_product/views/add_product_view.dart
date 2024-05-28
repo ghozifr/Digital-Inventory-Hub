@@ -18,14 +18,14 @@ class AddProductView extends GetView<AddProductController> {
         title: const Text(
           'ADD PRODUCT',
           style: TextStyle(
-            color: Color(0xFF5B0888),
+            color: Color(0xFFFFFFFF),
             fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0XFFF8F9FF),
+        backgroundColor: const Color(0XFF2F2D4E),
       ),
-      backgroundColor: const Color(0XFFF8F9FF),
+      backgroundColor: const Color(0XFF2F2D4E),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
@@ -34,22 +34,22 @@ class AddProductView extends GetView<AddProductController> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(9),
               boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFF0D2750).withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(6, 6),
-                ),
-                BoxShadow(
-                  color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
-                  spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(-6, -6),
-                ),
-              ],
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 12,
+                      offset: const Offset(5, 5), // changes position of shadow
+                    ),
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                      offset: const Offset(-5, -5), // changes position of shadow
+                    ),
+                  ],
             ),
           ),
-          Text('Product ID:'),
+          const Text('Product ID:'),
           Obx(() => Text('Current Value: ${controllerR.productId}')),
           const SizedBox(height: 20),
           Container(
@@ -57,19 +57,19 @@ class AddProductView extends GetView<AddProductController> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(9),
               boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFF0D2750).withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(6, 6),
-                ),
-                BoxShadow(
-                  color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
-                  spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(-6, -6),
-                ),
-              ],
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 12,
+                      offset: const Offset(5, 5), // changes position of shadow
+                    ),
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                      offset: const Offset(-5, -5), // changes position of shadow
+                    ),
+                  ],
             ),
             child: TextField(
               autocorrect: false,
@@ -90,19 +90,19 @@ class AddProductView extends GetView<AddProductController> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(9),
               boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFF0D2750).withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(6, 6),
-                ),
-                BoxShadow(
-                  color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
-                  spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(-6, -6),
-                ),
-              ],
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 12,
+                      offset: const Offset(5, 5), // changes position of shadow
+                    ),
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                      offset: const Offset(-5, -5), // changes position of shadow
+                    ),
+                  ],
             ),
             child: TextField(
               autocorrect: false,

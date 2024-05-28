@@ -16,14 +16,14 @@ Widget build(BuildContext context) {
       title: const Text(
         'PRODUCT',
         style: TextStyle(
-          color: Color(0xFF5B0888),
+          color: Color(0xFFffffff),
           fontWeight: FontWeight.bold,
         ),
       ),
-      backgroundColor: const Color(0XFFF8F9FF),
+      backgroundColor: const Color(0XFF2F2D4E),
       centerTitle: true,
     ),
-    backgroundColor: const Color(0XFFF8F9FF),
+    backgroundColor: const Color(0XFF2F2D4E),
     body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
       stream: controller.streamProducts(),
       builder: (context, snapProducts) {
@@ -57,16 +57,16 @@ Widget build(BuildContext context) {
                 borderRadius: BorderRadius.circular(9),
                 boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF0D2750).withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: const Offset(6, 6), // changes position of shadow
+                      color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 12,
+                      offset: const Offset(5, 5), // changes position of shadow
                     ),
                     BoxShadow(
-                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
                       spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: const Offset(-6, -6), // changes position of shadow
+                      blurRadius: 10,
+                      offset: const Offset(-5, -5), // changes position of shadow
                     ),
                   ],
               ),
@@ -88,7 +88,7 @@ Widget build(BuildContext context) {
                               product.code,
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color(0xFF5B0888),
+                                color: Color(0xFF2F2D4E),
                                 fontSize: 18,
                               ),
                             ),
@@ -96,14 +96,14 @@ Widget build(BuildContext context) {
                             Text(
                               product.name,
                               style: const TextStyle(
-                                color: Color(0xFF5B0888),
+                                color: Color(0xFF2F2D4E),
                                 fontSize: 16,
                               ),
                             ),
                             Text(
                               "Quantity : ${product.qty}",
                               style: const TextStyle(
-                                color: Color(0xFF5B0888),
+                                color: Color(0xFF2F2D4E),
                                 fontSize: 14,
                               ),
                             ),

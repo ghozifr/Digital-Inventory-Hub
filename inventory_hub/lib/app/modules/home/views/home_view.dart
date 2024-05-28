@@ -22,9 +22,9 @@ Widget build(BuildContext context) {
           height: 50, // Adjust height as needed
         ),
       ),
-      backgroundColor: const Color(0XFFF2A284D),
+      backgroundColor: const Color(0XFF2F2D4E),
     ),
-    backgroundColor: const Color(0XFF2A284D),
+    backgroundColor: const Color(0XFF2F2D4E),
     body: SingleChildScrollView(
       physics: const AlwaysScrollableScrollPhysics(),
       child: Padding(
@@ -94,20 +94,19 @@ Widget build(BuildContext context) {
                 margin: const EdgeInsets.only(bottom: 20),
                 decoration: BoxDecoration(
                   color: const Color(0XFFFFFFFF),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(9),
                   boxShadow: [
                     BoxShadow(
-                      color: Color.fromARGB(255, 23, 22, 47).withOpacity(1),
-                      spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: const Offset(6, 6), // changes position of shadow
+                      color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 12,
+                      offset: const Offset(5, 5), // changes position of shadow
                     ),
                     BoxShadow(
-                      // color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
-                      color: const Color(0xFF35325A).withOpacity(1),
+                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
                       spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: const Offset(-6, -6), // changes position of shadow
+                      blurRadius: 10,
+                      offset: const Offset(-5, -5), // changes position of shadow
                     ),
                   ],
                 ),
