@@ -11,6 +11,7 @@ class RegistrationView extends StatelessWidget {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
 
   RegistrationView({super.key});
 
@@ -27,14 +28,14 @@ Widget build(BuildContext context) {
       title: const Text(
         'Hi! Welcome',
         style: TextStyle(
-          color: Color(0xFF5B0888),
+          color: Color(0xFFffffff),
           fontWeight: FontWeight.bold,
         ),
       ),
       centerTitle: true,
-      backgroundColor: const Color(0xFFF1EAFF),
+      backgroundColor: const Color(0xFF2F2D4E),
     ),
-    backgroundColor: const Color(0xFFF1EAFF),
+    backgroundColor: const Color(0xFF2F2D4E),
     body: ListView(
       padding: const EdgeInsets.all(20),
       children: [
@@ -79,25 +80,52 @@ Widget build(BuildContext context) {
             filled: true,
           ),
         ),
-        
+        const SizedBox(height: 20),
+          // Confirm Password TextField
+          TextField(
+            autocorrect: false,
+            controller: _confirmPasswordController,
+            keyboardType: TextInputType.text,
+            obscureText: true,
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.lock),
+              prefixIconColor: Color(0xFF5B0888),
+              labelText: "Confirmation Password",
+              border: InputBorder.none,
+              fillColor: Color.fromARGB(255, 255, 255, 255),
+              filled: true,
+            ),
+          ),
         const SizedBox(height: 15),
         TextButton(
           onPressed: () {
             Get.toNamed(Routes.login);
           },
-          child: Text("Already have an account?"),
+          child: const Text("Already have an account?",
+          style: TextStyle(
+              color: Colors.white, // Change this to your desired color
+            ),),
         ),
         const SizedBox(height: 35),
         ElevatedButton(
           onPressed: _signupController.isLoading.value
               ? null
               : () {
-                  signUp();
-                  // Navigate to the login page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginView()),
-                  );
+                  if (_confirmPasswordController.text != _passwordController.text) {
+                      Get.snackbar(
+                        'Error',
+                        'Passwords do not match.',
+                        backgroundColor: Colors.red,
+                        colorText: Colors.white,
+                      );
+                    } else {
+                      signUp();
+                      // Navigate to the login page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginView()),
+                    );
+                    }
                 },
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
@@ -114,7 +142,7 @@ Widget build(BuildContext context) {
               : const Text(
                   'SIGN UP',
                   style: TextStyle(
-                    color: Color(0xFF5B0888),
+                    color: Color(0xFF2F2D4E),
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -125,3 +153,5 @@ Widget build(BuildContext context) {
   );
 }
 }
+
+//tabahan1

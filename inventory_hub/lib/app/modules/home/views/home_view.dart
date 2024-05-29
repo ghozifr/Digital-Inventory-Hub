@@ -6,6 +6,7 @@ import '../../../controllers/auth_controller.dart';
 import '../../../routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
+//check main
 
 class HomeView extends GetView<HomeController> {
   HomeView({Key? key}) : super(key: key);
@@ -21,16 +22,16 @@ Widget build(BuildContext context) {
           height: 50, // Adjust height as needed
         ),
       ),
-      backgroundColor: const Color(0XFFF8F9FF),
+      backgroundColor: const Color(0XFF2F2D4E),
     ),
-    backgroundColor: const Color(0XFFF8F9FF),
+    backgroundColor: const Color(0XFF2F2D4E),
     body: SingleChildScrollView(
       physics: const AlwaysScrollableScrollPhysics(),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: List.generate(5, (index) {
+          children: List.generate(4, (index) {
             late String title;
             late String imagePath;
             late VoidCallback onTap;
@@ -39,20 +40,20 @@ Widget build(BuildContext context) {
             switch (index) {
               case 0:
                 title = "Add Product";
-                imagePath = "lib/assets/images/add.png";
+                imagePath = "lib/assets/images/tambah.png";
                 onTap = () => Get.toNamed(Routes.addProduct);
                 description =
                     "Add a new product by adding product code, name, and quantity.";
                 break;
               case 1:
                 title = "Products";
-                imagePath = "lib/assets/images/list.png";
+                imagePath = "lib/assets/images/features.png";
                 onTap = () => Get.toNamed(Routes.products);
                 description = "View all products that have been added.";
                 break;
               case 2:
                 title = "QR Code";
-                imagePath = "lib/assets/images/qr.png";
+                imagePath = "lib/assets/images/scan.png";
                 onTap = () async {
                   String barcode = await FlutterBarcodeScanner.scanBarcode(
                     "#000000",
@@ -79,20 +80,11 @@ Widget build(BuildContext context) {
                 break;
               case 3:
                 title = "Dowload";
-                imagePath = "lib/assets/images/file.png";
+                imagePath = "lib/assets/images/rep.png";
                 onTap = () {
                   controller.downloadCatalog();
                 };
                 description = "Download product list";
-                break;
-
-                case 4:
-                title = "Analysis";
-                imagePath = "lib/assets/images/graph.png";
-                onTap = () {
-                  //link webview
-                };
-                description = "View analysis of the products";
                 break;
             }
 
@@ -101,20 +93,20 @@ Widget build(BuildContext context) {
               child: Container(
                 margin: const EdgeInsets.only(bottom: 20),
                 decoration: BoxDecoration(
-                  color: const Color(0XFFF8F9FF),
-                  borderRadius: BorderRadius.circular(20),
+                  color: const Color(0XFFFFFFFF),
+                  borderRadius: BorderRadius.circular(9),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF0D2750).withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: const Offset(6, 6), // changes position of shadow
+                      color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 12,
+                      offset: const Offset(5, 5), // changes position of shadow
                     ),
                     BoxShadow(
-                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
                       spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: const Offset(-6, -6), // changes position of shadow
+                      blurRadius: 10,
+                      offset: const Offset(-5, -5), // changes position of shadow
                     ),
                   ],
                 ),
@@ -129,7 +121,7 @@ Widget build(BuildContext context) {
                   title: Text(
                     title,
                     style: const TextStyle(
-                      color: Color(0xFF5B0888), // Change color
+                      color: Color(0xFF204C68), // Change color
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                     ),
@@ -139,7 +131,7 @@ Widget build(BuildContext context) {
                     child: Text(
                       description,
                       style: const TextStyle(
-                        color: Color(0xFF5B0888), // Change color
+                        color: Color(0xFF204C68), // Change color
                         fontSize: 12,
                       ),
                     ),

@@ -12,7 +12,7 @@ dependencies:
   firebase_auth: ^4.2.5
   firebase_core: ^2.4.1
   firebase_database: ^10.2.7
-  fl_chart: ^0.68.0
+  
   flutter:
     sdk: flutter
   flutter_barcode_scanner: ^2.0.0
@@ -48,3 +48,7 @@ flutter:
    - lib/assets/images/graph.png
    - lib/assets/images/digital.png
    - lib/assets/images/logpo.png
+   - lib/assets/images/rep.png
+   - lib/assets/images/tambah.png
+   - lib/assets/images/scan.png
+   - lib/assets/images/features.png

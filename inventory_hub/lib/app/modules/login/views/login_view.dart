@@ -21,14 +21,14 @@ Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
       title: const Text('Hi! Welcome back', style: TextStyle(
-        color: Color(0xFF5B0888),
+        color: Color(0xFFFFFFFF),
         fontWeight: FontWeight.bold,
         ),
       ),
       centerTitle: true,
-      backgroundColor: const Color(0xFFF1EAFF),
+      backgroundColor: const Color(0xFF2F2D4E),
     ),
-    backgroundColor: const Color(0xFFF1EAFF),
+    backgroundColor: const Color(0xFF2F2D4E),
     body: ListView(
       padding: const EdgeInsets.all(20),
       children: [
@@ -90,7 +90,11 @@ Widget build(BuildContext context) {
           onPressed: () {
             Get.toNamed(Routes.registration);
           },
-          child: Text("Create an account"),
+          child: const Text("Create an account",
+          style: TextStyle(
+              color: Colors.white, // Change this to your desired color
+            ),
+          ),
         ),
         const SizedBox(height: 35),
         ElevatedButton(
@@ -125,7 +129,7 @@ Widget build(BuildContext context) {
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF5B0888),
+              color: Color(0xFF2F2D4E),
               ),
               ),
             ),
