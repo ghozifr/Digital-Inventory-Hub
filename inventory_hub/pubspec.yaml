@@ -49,3 +49,7 @@ flutter:
    - lib/assets/images/graph.png
    - lib/assets/images/digital.png
    - lib/assets/images/logpo.png
+   - lib/assets/images/rep.png
+   - lib/assets/images/tambah.png
+   - lib/assets/images/scan.png
+   - lib/assets/images/features.png

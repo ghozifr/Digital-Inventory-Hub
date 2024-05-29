@@ -28,14 +28,14 @@ Widget build(BuildContext context) {
       title: const Text(
         'Hi! Welcome',
         style: TextStyle(
-          color: Color(0xFF5B0888),
+          color: Color(0xFFffffff),
           fontWeight: FontWeight.bold,
         ),
       ),
       centerTitle: true,
-      backgroundColor: const Color(0xFFF1EAFF),
+      backgroundColor: const Color(0xFF2F2D4E),
     ),
-    backgroundColor: const Color(0xFFF1EAFF),
+    backgroundColor: const Color(0xFF2F2D4E),
     body: ListView(
       padding: const EdgeInsets.all(20),
       children: [
@@ -101,7 +101,10 @@ Widget build(BuildContext context) {
           onPressed: () {
             Get.toNamed(Routes.login);
           },
-          child: Text("Already have an account?"),
+          child: const Text("Already have an account?",
+          style: TextStyle(
+              color: Colors.white, // Change this to your desired color
+            ),),
         ),
         const SizedBox(height: 35),
         ElevatedButton(
@@ -139,7 +142,7 @@ Widget build(BuildContext context) {
               : const Text(
                   'SIGN UP',
                   style: TextStyle(
-                    color: Color(0xFF5B0888),
+                    color: Color(0xFF2F2D4E),
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
