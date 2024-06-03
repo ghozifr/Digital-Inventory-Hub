@@ -11,6 +11,20 @@ class AddProductView extends GetView<AddProductController> {
   final AddProductController controllerR = Get.put(AddProductController());
   final AddProductController timecontroller = Get.put(AddProductController());
 
+  Future pickImage() async {
+    
+    // final pickedFile = await ImagePicker().getImage(source: ImageSource.gallery);
+    // if (pickedFile != null) {
+    //   final File file = File(pickedFile.path);
+    //   final String fileName = basename(file.path);
+    //   final Reference ref = FirebaseStorage.instance.ref().child(fileName);
+    //   final UploadTask uploadTask = ref.putFile(file);
+    //   final TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
+    //   final String url = await taskSnapshot.ref.getDownloadURL();
+    //   return url;
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -167,6 +181,25 @@ class AddProductView extends GetView<AddProductController> {
             child: Obx(
               () => Text(
                 controller.isLoading.isFalse ? "ADD PRODUCT" : "LOADING..."
+              ),
+            ),
+          ),
+          const SizedBox(height: 35),
+          ElevatedButton(
+            onPressed: () async {
+            },
+            style: ElevatedButton.styleFrom(
+              foregroundColor: const Color(0xFF2F2D4E),
+              backgroundColor: Colors.white,
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(9),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 20),
+            ),
+            child: Obx(
+              () => Text(
+                controller.isLoading.isFalse ? "ADD IMAGE" : "LOADING..."
               ),
             ),
           ),
