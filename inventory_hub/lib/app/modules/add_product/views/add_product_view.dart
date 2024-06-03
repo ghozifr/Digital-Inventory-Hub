@@ -94,6 +94,66 @@ class AddProductView extends GetView<AddProductController> {
                       offset: const Offset(-5, -5), // changes position of shadow
                     ),
                   ],
+                BoxShadow(
+                  color: const Color(0xFF0D2750).withOpacity(0.2),
+                  spreadRadius: 1,
+                  blurRadius: 8,
+                  offset: const Offset(6, 6),
+                ),
+                BoxShadow(
+                  color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                  spreadRadius: 1,
+                  blurRadius: 8,
+                  offset: const Offset(-6, -6),
+                ),
+              ],
+        ),
+        // TextField(
+        //   autocorrect: false,
+        //   controller: codeC,
+        //   keyboardType: TextInputType.number,
+        //   maxLength: 10,
+        //   decoration: InputDecoration(
+        //     labelText: "Product Code",
+        //     border: OutlineInputBorder(
+        //       borderRadius: BorderRadius.circular(9),
+        //       borderSide: const BorderSide(color: Color(0xFFD0A2F7)), // Change border color
+        //     ),
+        //     focusedBorder: OutlineInputBorder( // Change border color when focused
+        //       borderRadius: BorderRadius.circular(9),
+        //       borderSide: const BorderSide(color: Color(0xFF5B0888)), // Change border color when focused
+        //     ),
+        //   ),
+        // ),
+        Text('Product ID:'),
+            TextField(
+              controller: controllerR.textController,
+              keyboardType: TextInputType.number,
+              onChanged: (value) {
+                // Update the productId in the controller whenever the value changes
+                controllerR.productId.value = int.tryParse(value) ?? 0;
+              },
+            ),
+            Obx(() => Text('Current Value: ${controllerR.productId}')),
+        const SizedBox(height: 20),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white, // Fill color
+            borderRadius: BorderRadius.circular(9),
+            boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 12,
+                      offset: const Offset(5, 5), // changes position of shadow
+                    ),
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                      offset: const Offset(-5, -5), // changes position of shadow
+                    ),
+                  ],
             ),
             child: TextField(
               autocorrect: false,
