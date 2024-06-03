@@ -9,6 +9,8 @@ import 'app/modules/loading/loading_screen.dart';
 import 'app/routes/app_pages.dart';
 import 'firebase_options.dart';
 
+// GUE TANDAIN LU
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
