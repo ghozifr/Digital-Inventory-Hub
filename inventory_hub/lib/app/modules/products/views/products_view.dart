@@ -117,25 +117,25 @@ Widget build(BuildContext context) {
                                 fontStyle:FontStyle.italic,
                               ),
                             ),
+                            const SizedBox(height: 2),
+                            const Text(
+                              "Tap here to see more details",
+                              style: TextStyle(
+                                color: Color(0xFF2F2D4E),
+                                fontSize: 14,
+                                fontStyle:FontStyle.italic,
+                              ),
+                            ),
                           ],
                         ),
                       ),
                       SizedBox(
                         height: 100,
                         width: 100,
-                        child: QrImage(
+                        child: QrImageView(
                           data: product.code,
                           size: 200.0,
                           version: QrVersions.auto,
-                        SizedBox(
-                          height: 50,
-                          width: 50,
-                          child: QrImageView(
-                            data: product.code,
-                            size: 200.0,
-                            version: QrVersions.auto,
-                          ),
-                        ),
                       ),
                       )
                     ],

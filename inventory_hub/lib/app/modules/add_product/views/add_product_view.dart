@@ -11,6 +11,20 @@ class AddProductView extends GetView<AddProductController> {
   final AddProductController controllerR = Get.put(AddProductController());
   final AddProductController timecontroller = Get.put(AddProductController());
 
+  Future pickImage() async {
+    
+    // final pickedFile = await ImagePicker().getImage(source: ImageSource.gallery);
+    // if (pickedFile != null) {
+    //   final File file = File(pickedFile.path);
+    //   final String fileName = basename(file.path);
+    //   final Reference ref = FirebaseStorage.instance.ref().child(fileName);
+    //   final UploadTask uploadTask = ref.putFile(file);
+    //   final TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
+    //   final String url = await taskSnapshot.ref.getDownloadURL();
+    //   return url;
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,15 +35,6 @@ class AddProductView extends GetView<AddProductController> {
             color: Color(0xFFFFFFFF),
             fontWeight: FontWeight.bold,
           ),
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: const Text(
-        'ADD PRODUCT',
-        style: TextStyle(
-          color: Color(0xFF5B0888),
-          fontWeight: FontWeight.bold,
         ),
         centerTitle: true,
         backgroundColor: const Color(0XFF2F2D4E),
@@ -137,29 +142,18 @@ Widget build(BuildContext context) {
             borderRadius: BorderRadius.circular(9),
             boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF0D2750).withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: const Offset(6, 6), // changes position of shadow
+                      color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 12,
+                      offset: const Offset(5, 5), // changes position of shadow
                     ),
                     BoxShadow(
-                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
                       spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: const Offset(-6, -6), // changes position of shadow
+                      blurRadius: 10,
+                      offset: const Offset(-5, -5), // changes position of shadow
                     ),
                   ],
-          ),
-          child: TextField(
-            autocorrect: false,
-            controller: nameC,
-            keyboardType: TextInputType.text,
-            decoration: const InputDecoration(
-              labelText: "Product Name",
-              border: InputBorder.none, // Remove border
-              focusedBorder: InputBorder.none, // Remove focused border
-              enabledBorder: InputBorder.none, // Remove enabled border
-              contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             ),
             child: TextField(
               autocorrect: false,
@@ -223,23 +217,6 @@ Widget build(BuildContext context) {
                     "qty": int.tryParse(qtyC.text) ?? 0,
                   });
                   controller.isLoading(false);
-        ),
-        const SizedBox(height: 35),
-        ElevatedButton(
-          onPressed: () async {
-            codeC.text = controllerR.textController.value.text;
-            if (controller.isLoading.isFalse) {
-              if (
-                codeC.text.isNotEmpty &&
-                  nameC.text.isNotEmpty &&
-                  qtyC.text.isNotEmpty) {
-                controller.isLoading(true);
-                Map<String, dynamic> hasil = await controller.addProduct({
-                  "code": codeC.text,
-                  "name": nameC.text,
-                  "qty": int.tryParse(qtyC.text) ?? 0,
-                });
-                controller.isLoading(false);
 
                   Get.back();
 
@@ -264,6 +241,25 @@ Widget build(BuildContext context) {
             child: Obx(
               () => Text(
                 controller.isLoading.isFalse ? "ADD PRODUCT" : "LOADING..."
+              ),
+            ),
+          ),
+          const SizedBox(height: 35),
+          ElevatedButton(
+            onPressed: () async {
+            },
+            style: ElevatedButton.styleFrom(
+              foregroundColor: const Color(0xFF2F2D4E),
+              backgroundColor: Colors.white,
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(9),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 20),
+            ),
+            child: Obx(
+              () => Text(
+                controller.isLoading.isFalse ? "ADD IMAGE" : "LOADING..."
               ),
             ),
           ),
