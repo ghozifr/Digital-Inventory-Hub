@@ -170,6 +170,25 @@ class AddProductView extends GetView<AddProductController> {
               ),
             ),
           ),
+          const SizedBox(height: 35),
+          ElevatedButton(
+            onPressed: () async {
+            },
+            style: ElevatedButton.styleFrom(
+              foregroundColor: const Color(0xFF2F2D4E),
+              backgroundColor: Colors.white,
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(9),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 20),
+            ),
+            child: Obx(
+              () => Text(
+                controller.isLoading.isFalse ? "ADD IMAGE" : "LOADING..."
+              ),
+            ),
+          ),
         ],
       ),
     );
