@@ -245,10 +245,17 @@ packages:
     dependency: transitive
     description:
       name: firebase_database_web
+<<<<<<< HEAD
       sha256: e49ac12c2982d18e32f72fae6efffaba1d773942c28c741f1ffeb55027711ff5
       url: "https://pub.dev"
     source: hosted
     version: "0.2.5+6"
+=======
+      sha256: "9e14532089bc2ec0fb3d3f1365c49213e7b4c3367357b69ba7fbf05d51917479"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.3+7"
+>>>>>>> 0f2a4b129a22472590a92f1ec32bb5fb47933a88
   flutter:
     dependency: "direct main"
     description: flutter

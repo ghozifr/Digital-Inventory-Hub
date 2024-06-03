@@ -117,6 +117,15 @@ Widget build(BuildContext context) {
                                 fontStyle:FontStyle.italic,
                               ),
                             ),
+                            const SizedBox(height: 2),
+                            const Text(
+                              "Tap here to see more details",
+                              style: TextStyle(
+                                color: Color(0xFF2F2D4E),
+                                fontSize: 14,
+                                fontStyle:FontStyle.italic,
+                              ),
+                            ),
                           ],
                         ),
                       ),
