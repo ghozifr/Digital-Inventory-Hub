@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
 import 'package:firebase_database/firebase_database.dart';
 
@@ -15,6 +16,8 @@ class AddProductController extends GetxController {
   late DatabaseReference ref;
   late TextEditingController textController;
   RxInt productId = 0.obs;
+
+
 
   @override
   void onInit() {
