@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import '../controllers/add_product_controller.dart';
 
@@ -21,15 +22,6 @@ class AddProductView extends GetView<AddProductController> {
             color: Color(0xFFFFFFFF),
             fontWeight: FontWeight.bold,
           ),
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: const Text(
-        'ADD PRODUCT',
-        style: TextStyle(
-          color: Color(0xFF5B0888),
-          fontWeight: FontWeight.bold,
         ),
         centerTitle: true,
         backgroundColor: const Color(0XFF2F2D4E),
@@ -43,123 +35,86 @@ Widget build(BuildContext context) {
               color: Colors.white,
               borderRadius: BorderRadius.circular(9),
               boxShadow: [
-                    BoxShadow(
-                      color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
-                      spreadRadius: 2,
-                      blurRadius: 12,
-                      offset: const Offset(5, 5), // changes position of shadow
-                    ),
-                    BoxShadow(
-                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 10,
-                      offset: const Offset(-5, -5), // changes position of shadow
-                    ),
-                  ],
+                BoxShadow(
+                  color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                  spreadRadius: 2,
+                  blurRadius: 12,
+                  offset: const Offset(5, 5), // changes position of shadow
+                ),
+                BoxShadow(
+                  color:
+                      const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
+                  spreadRadius: 1,
+                  blurRadius: 10,
+                  offset: const Offset(-5, -5), // changes position of shadow
+                ),
+              ],
             ),
           ),
           const Text(
-          'Product ID',
-              style: TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold, // Change this to your desired color
-              ),
+            'Product ID',
+            style: TextStyle(
+              color: Colors.white, fontSize: 18,
+              fontWeight: FontWeight.bold, // Change this to your desired color
             ),
-        Obx(() => Text(
-          'Current Value: ${controllerR.productId}',
-          style: const TextStyle(
-            color: Colors.white, // Change this to your desired color
           ),
-        )),
+          Obx(() => Text(
+                'Current Value: ${controllerR.productId}',
+                style: const TextStyle(
+                  color: Colors.white, // Change this to your desired color
+                ),
+              )),
+          const SizedBox(height: 20),
+          Container(
+              decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(9),
+            boxShadow: [
+              BoxShadow(
+                color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                spreadRadius: 2,
+                blurRadius: 12,
+                offset: const Offset(5, 5), // changes position of shadow
+              ),
+              BoxShadow(
+                color:
+                    const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
+                spreadRadius: 1,
+                blurRadius: 10,
+                offset: const Offset(-5, -5), // changes position of shadow
+              ),
+            ],
+          )),
+          // Text('Product ID:'),
+          // TextField(
+          //   controller: controllerR.textController,
+          //   keyboardType: TextInputType.number,
+          //   onChanged: (value) {
+          //     // Update the productId in the controller whenever the value changes
+          //     controllerR.productId.value = int.tryParse(value) ?? 0;
+          //   },
+          // ),
+          // Obx(() => Text('Current Value: ${controllerR.productId}')),
           const SizedBox(height: 20),
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Colors.white, // Fill color
               borderRadius: BorderRadius.circular(9),
               boxShadow: [
-                    BoxShadow(
-                      color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
-                      spreadRadius: 2,
-                      blurRadius: 12,
-                      offset: const Offset(5, 5), // changes position of shadow
-                    ),
-                    BoxShadow(
-                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 10,
-                      offset: const Offset(-5, -5), // changes position of shadow
-                    ),
-                  ],
                 BoxShadow(
-                  color: const Color(0xFF0D2750).withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(6, 6),
+                  color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                  spreadRadius: 2,
+                  blurRadius: 12,
+                  offset: const Offset(5, 5), // changes position of shadow
                 ),
                 BoxShadow(
-                  color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                  color:
+                      const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
                   spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(-6, -6),
+                  blurRadius: 10,
+                  offset: const Offset(-5, -5), // changes position of shadow
                 ),
               ],
-        ),
-        // TextField(
-        //   autocorrect: false,
-        //   controller: codeC,
-        //   keyboardType: TextInputType.number,
-        //   maxLength: 10,
-        //   decoration: InputDecoration(
-        //     labelText: "Product Code",
-        //     border: OutlineInputBorder(
-        //       borderRadius: BorderRadius.circular(9),
-        //       borderSide: const BorderSide(color: Color(0xFFD0A2F7)), // Change border color
-        //     ),
-        //     focusedBorder: OutlineInputBorder( // Change border color when focused
-        //       borderRadius: BorderRadius.circular(9),
-        //       borderSide: const BorderSide(color: Color(0xFF5B0888)), // Change border color when focused
-        //     ),
-        //   ),
-        // ),
-        Text('Product ID:'),
-            TextField(
-              controller: controllerR.textController,
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                // Update the productId in the controller whenever the value changes
-                controllerR.productId.value = int.tryParse(value) ?? 0;
-              },
-            ),
-            Obx(() => Text('Current Value: ${controllerR.productId}')),
-        const SizedBox(height: 20),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white, // Fill color
-            borderRadius: BorderRadius.circular(9),
-            boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xFF0D2750).withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: const Offset(6, 6), // changes position of shadow
-                    ),
-                    BoxShadow(
-                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
-                      spreadRadius: 1,
-                      blurRadius: 8,
-                      offset: const Offset(-6, -6), // changes position of shadow
-                    ),
-                  ],
-          ),
-          child: TextField(
-            autocorrect: false,
-            controller: nameC,
-            keyboardType: TextInputType.text,
-            decoration: const InputDecoration(
-              labelText: "Product Name",
-              border: InputBorder.none, // Remove border
-              focusedBorder: InputBorder.none, // Remove focused border
-              enabledBorder: InputBorder.none, // Remove enabled border
-              contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             ),
             child: TextField(
               autocorrect: false,
@@ -170,7 +125,8 @@ Widget build(BuildContext context) {
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               ),
             ),
           ),
@@ -180,19 +136,20 @@ Widget build(BuildContext context) {
               color: Colors.white,
               borderRadius: BorderRadius.circular(9),
               boxShadow: [
-                    BoxShadow(
-                      color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
-                      spreadRadius: 2,
-                      blurRadius: 12,
-                      offset: const Offset(5, 5), // changes position of shadow
-                    ),
-                    BoxShadow(
-                      color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
-                      spreadRadius: 1,
-                      blurRadius: 10,
-                      offset: const Offset(-5, -5), // changes position of shadow
-                    ),
-                  ],
+                BoxShadow(
+                  color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                  spreadRadius: 2,
+                  blurRadius: 12,
+                  offset: const Offset(5, 5), // changes position of shadow
+                ),
+                BoxShadow(
+                  color:
+                      const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
+                  spreadRadius: 1,
+                  blurRadius: 10,
+                  offset: const Offset(-5, -5), // changes position of shadow
+                ),
+              ],
             ),
             child: TextField(
               autocorrect: false,
@@ -203,14 +160,16 @@ Widget build(BuildContext context) {
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               ),
             ),
           ),
           const SizedBox(height: 35),
           ElevatedButton(
             onPressed: () async {
-              final String formattedTime = await timecontroller.timeRecordToFirestore();
+              final String formattedTime =
+                  await timecontroller.timeRecordToFirestore();
               codeC.text = controllerR.productId.toString();
 
               if (controller.isLoading.isFalse) {
@@ -223,30 +182,11 @@ Widget build(BuildContext context) {
                     "qty": int.tryParse(qtyC.text) ?? 0,
                   });
                   controller.isLoading(false);
-        ),
-        const SizedBox(height: 35),
-        ElevatedButton(
-          onPressed: () async {
-            codeC.text = controllerR.textController.value.text;
-            if (controller.isLoading.isFalse) {
-              if (
-                codeC.text.isNotEmpty &&
-                  nameC.text.isNotEmpty &&
-                  qtyC.text.isNotEmpty) {
-                controller.isLoading(true);
-                Map<String, dynamic> hasil = await controller.addProduct({
-                  "code": codeC.text,
-                  "name": nameC.text,
-                  "qty": int.tryParse(qtyC.text) ?? 0,
-                });
-                controller.isLoading(false);
 
                   Get.back();
 
-                  Get.snackbar(
-                    hasil["error"] == true ? "Error" : "Success",
-                    hasil["message"]
-                  );
+                  Get.snackbar(hasil["error"] == true ? "Error" : "Success",
+                      hasil["message"]);
                 } else {
                   Get.snackbar("Error", "All data must be filled in.");
                 }
@@ -263,8 +203,7 @@ Widget build(BuildContext context) {
             ),
             child: Obx(
               () => Text(
-                controller.isLoading.isFalse ? "ADD PRODUCT" : "LOADING..."
-              ),
+                  controller.isLoading.isFalse ? "ADD PRODUCT" : "LOADING..."),
             ),
           ),
         ],

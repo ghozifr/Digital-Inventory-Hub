@@ -28,14 +28,14 @@ class DetailProductView extends GetView<DetailProductController> {
         title: const Text(
           'DETAIL PRODUCT',
           style: TextStyle(
-            color: Color(0xFF5B0888),
+            color: Color(0xFFffffff),
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: const Color(0XFFF8F9FF),
+        backgroundColor: const Color(0XFF2F2D4E),
         centerTitle: true,
       ),
-      backgroundColor: const Color(0XFFF8F9FF),
+      backgroundColor: const Color(0XFF2F2D4E),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
@@ -43,33 +43,47 @@ class DetailProductView extends GetView<DetailProductController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: 200,
-                width: 200,
-                child: QrImageView(
+                height: 180,
+                width: 180,
+                child: QrImage(
                   data: product.code,
-                  size: 200.0,
+                  size: 180.0,
                   version: QrVersions.auto,
+                  foregroundColor:
+                      const Color(0xFFFFFFFF), // Set your desired color here
                 ),
               ),
             ],
+          ),
+          const SizedBox(height: 10),
+          const Center(
+            child: Text(
+              'Edit the details of product',
+              style: TextStyle(
+                color: Colors.white, // Change this to your desired color
+                fontSize: 16,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
           ),
           const SizedBox(height: 20),
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(9),
+              borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFF0D2750).withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(6, 6),
+                  color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                  spreadRadius: 2,
+                  blurRadius: 12,
+                  offset: const Offset(5, 5), // changes position of shadow
                 ),
                 BoxShadow(
-                  color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                  color:
+                      const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
                   spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(-6, -6),
+                  blurRadius: 10,
+                  offset: const Offset(-5, -5), // changes position of shadow
                 ),
               ],
             ),
@@ -78,7 +92,6 @@ class DetailProductView extends GetView<DetailProductController> {
               controller: codeC,
               keyboardType: TextInputType.number,
               readOnly: true,
-              maxLength: 10,
               decoration: const InputDecoration(
                 labelText: "Product Code",
                 filled: true,
@@ -95,16 +108,17 @@ class DetailProductView extends GetView<DetailProductController> {
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFF0D2750).withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(6, 6),
+                  color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                  spreadRadius: 2,
+                  blurRadius: 12,
+                  offset: const Offset(5, 5), // changes position of shadow
                 ),
                 BoxShadow(
-                  color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                  color:
+                      const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
                   spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(-6, -6),
+                  blurRadius: 10,
+                  offset: const Offset(-5, -5), // changes position of shadow
                 ),
               ],
             ),
@@ -128,16 +142,17 @@ class DetailProductView extends GetView<DetailProductController> {
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFF0D2750).withOpacity(0.2),
-                  spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(6, 6),
+                  color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
+                  spreadRadius: 2,
+                  blurRadius: 12,
+                  offset: const Offset(5, 5), // changes position of shadow
                 ),
                 BoxShadow(
-                  color: const Color.fromARGB(255, 255, 255, 255).withOpacity(1),
+                  color:
+                      const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
                   spreadRadius: 1,
-                  blurRadius: 8,
-                  offset: const Offset(-6, -6),
+                  blurRadius: 10,
+                  offset: const Offset(-5, -5), // changes position of shadow
                 ),
               ],
             ),
@@ -197,20 +212,19 @@ class DetailProductView extends GetView<DetailProductController> {
           ),
           const SizedBox(height: 20),
           ElevatedButton(
-  onPressed: () {
-    controller.goToAnalysisView(product);
-  },
-  style: ElevatedButton.styleFrom(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(9),
-    ),
-    padding: const EdgeInsets.symmetric(vertical: 20),
-    backgroundColor: const Color(0xFF5B0888),
-    elevation: 5,
-  ),
-  child: const Text("ANALYSIS PRODUCT"),
-),
-
+            onPressed: () {
+              controller.goToAnalysisView(product);
+            },
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(9),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              backgroundColor: const Color(0xFFFFFFFF),
+              elevation: 5,
+            ),
+            child: const Text("PRODUCT STATISTICS RECORDS"),
+          ),
           TextButton(
             onPressed: () {
               Get.defaultDialog(
@@ -255,9 +269,10 @@ class DetailProductView extends GetView<DetailProductController> {
               );
             },
             child: Text(
-              "Delete product",
+              "DELETE PRODUCT",
               style: TextStyle(
                 color: Colors.red.shade900,
+                fontSize: 16,
               ),
             ),
           ),

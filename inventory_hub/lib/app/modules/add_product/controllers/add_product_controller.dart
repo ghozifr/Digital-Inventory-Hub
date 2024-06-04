@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
 import 'package:firebase_database/firebase_database.dart';
 
@@ -19,13 +20,6 @@ class AddProductController extends GetxController {
   @override
   void onInit() {
     super.onInit();
- RxInt productId = 0.obs;
- late TextEditingController textController;
-
-  @override
-  void onInit() {
-    super.onInit();
-    // Generate a random product ID when the controller is initialized
     generateRandomProductId();
     textController = TextEditingController(text: productId.value.toString());
     productId.listen((val) {
@@ -40,6 +34,7 @@ class AddProductController extends GetxController {
     Random random = Random();
     productId.value = random.nextInt(1000000000);
   }
+
   @override
   void onClose() {
     textController.dispose();
@@ -65,43 +60,48 @@ class AddProductController extends GetxController {
     final DateFormat formatter = DateFormat('dd-MM-yyyy HH:mm:ss');
     return formatter.format(now);
   }
+
   Future<Map<String, dynamic>> addProduct(Map<String, dynamic> data) async {
-  try {
-    User? user = _auth.currentUser;
-    if (user != null) {
-      CollectionReference productsCollection = firestore.collection('users').doc(user.uid).collection('products');
+    try {
+      User? user = _auth.currentUser;
+      if (user != null) {
+        CollectionReference productsCollection =
+            firestore.collection('users').doc(user.uid).collection('products');
 
-      // Add the product data to the 'products' collection
-      var hasil = await productsCollection.add(data);
+        // Add the product data to the 'products' collection
+        var hasil = await productsCollection.add(data);
 
-      // Update the product document to include its own ID
-      await productsCollection.doc(hasil.id).update({
-        "productId": hasil.id,
-      });
+        // Update the product document to include its own ID
+        await productsCollection.doc(hasil.id).update({
+          "productId": hasil.id,
+        });
 
-      // Set a custom document ID for the 'timedate' subcollection using current time
-      String timestampId = DateTime.now().millisecondsSinceEpoch.toString();
-      await productsCollection.doc(hasil.id).collection('timedate').doc(timestampId).set({
-        'qty': data["qty"],
-        'updatedAt': formatCurrentTime(),
-      });
+        // Set a custom document ID for the 'timedate' subcollection using current time
+        String timestampId = DateTime.now().millisecondsSinceEpoch.toString();
+        await productsCollection
+            .doc(hasil.id)
+            .collection('timedate')
+            .doc(timestampId)
+            .set({
+          'qty': data["qty"],
+          'updatedAt': formatCurrentTime(),
+        });
 
+        return {
+          "error": false,
+          "message": "Product added successfully.",
+        };
+      }
       return {
-        "error": false,
-        "message": "Product added successfully.",
+        "error": true,
+        "message": "User is not logged in.",
+      };
+    } catch (e) {
+      print(e);
+      return {
+        "error": true,
+        "message": "Adding product was unsuccessful.",
       };
     }
-    return {
-      "error": true,
-      "message": "User is not logged in.",
-    };
-  } catch (e) {
-    print(e);
-    return {
-      "error": true,
-      "message": "Adding product was unsuccessful.",
-    };
   }
-}
-
 }
